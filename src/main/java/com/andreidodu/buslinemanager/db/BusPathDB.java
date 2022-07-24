@@ -1,6 +1,6 @@
 package com.andreidodu.buslinemanager.db;
 
-import java.util.Set;
+import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -38,11 +37,11 @@ public class BusPathDB extends CommonDB {
 	@Basic
 	@Temporal(TemporalType.TIME)
 	@Column(name = "expected_arrival_time")
-	private java.util.Date expectedArrivalTime;
+	private Date expectedArrivalTime;
 
 	@Basic
 	@Temporal(TemporalType.TIME)
 	@Column(name = "departure_time")
-	private java.util.Date departureTime;
+	private Date departureTime;
 
 }
