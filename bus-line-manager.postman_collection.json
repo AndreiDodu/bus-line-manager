@@ -177,7 +177,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation Bus{\n    insertBusLine(data: {name: \"Paris\"}){\n        id\n        name\n    }\n   \n}",
+								"query": "mutation Bus{\n    insertBusLine(data: {name: \"Paris-Bologna\"}){\n        id\n        name\n    }\n   \n}",
 								"variables": ""
 							}
 						},
@@ -338,7 +338,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation Bus{\n    insertBusStop(data: {name: \"Paris\"}){\n        id\n        name\n    }\n   \n}",
+								"query": "mutation Bus{\n    paris: insertBusStop(data: {name: \"Paris\"}){\n        id\n        name\n    }\n    milano: insertBusStop(data: {name: \"Milano\"}){\n        id\n        name\n    }\n    piacenaza: insertBusStop(data: {name: \"Piacenza\"}){\n        id\n        name\n    }\n    bologna: insertBusStop(data: {name: \"Bologna\"}){\n        id\n        name\n    }\n\n   \n}",
 								"variables": ""
 							}
 						},
@@ -364,7 +364,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation Bus{\n    updateBusStop(id: 3, data: {name: \"Rome\"}){\n        id\n        name\n    }\n   \n}",
+								"query": "mutation Bus{\n    updateBusStop(id: 2, data: {name: \"Lione\"}){\n        id\n        name\n    }\n   \n}",
 								"variables": ""
 							}
 						},
@@ -447,7 +447,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation insertSeat{\n    insertSeat(data: {code: \"N45\"}){\n        id\n        code\n    }\n   \n}",
+								"query": "mutation insertSeat{\n    c10: insertSeat(data: {code: \"C10\"}){\n        id\n        code\n    }\n    c11: insertSeat(data: {code: \"C11\"}){\n        id\n        code\n    }\n    c12: insertSeat(data: {code: \"C12\"}){\n        id\n        code\n    }\n    c13: insertSeat(data: {code: \"C13\"}){\n        id\n        code\n    }\n}",
 								"variables": ""
 							}
 						},
@@ -556,7 +556,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation insertPassenger{\n    insertPassenger(data: {firstName: \"Mario\", secondName: \"Rossi\"}){\n        id\n        firstName\n        secondName\n    }\n   \n}",
+								"query": "mutation insertPassenger{\n    rossi: insertPassenger(data: {firstName: \"Roberto\", secondName: \"Rossi\"}){\n        id\n        firstName\n        secondName\n    }\n    verdi: insertPassenger(data: {firstName: \"Francesco\", secondName: \"Verdi\"}){\n        id\n        firstName\n        secondName\n    }\n    gialli: insertPassenger(data: {firstName: \"Emiliano\", secondName: \"Gialli\"}){\n        id\n        firstName\n        secondName\n    }\n    neri: insertPassenger(data: {firstName: \"Federico\", secondName: \"Neri\"}){\n        id\n        firstName\n        secondName\n    }\n    bianchi: insertPassenger(data: {firstName: \"Ferdinando\", secondName: \"Bianchi\"}){\n        id\n        firstName\n        secondName\n    }\n            \n}",
 								"variables": ""
 							}
 						},
@@ -665,7 +665,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation insertBusPath{\n    insertBusPath(data: {busStopId: 1, busLineId:1, expectedArrivalTime: \"2011-10-05T14:48:00.000Z\", departureTime: \"2011-10-05T14:48:00.000Z\"}){\n        id\n        expectedArrivalTime\n        departureTime\n    }\n   \n}",
+								"query": "mutation insertBusPath{\n    due: insertBusPath(data: {busStopId: 1, busLineId:1, expectedArrivalTime: \"2011-10-05T14:48:00.000Z\", departureTime: \"2011-10-05T14:48:00.000Z\"}){\n        id\n        expectedArrivalTime\n        departureTime\n    }\n    tre: insertBusPath(data: {busStopId: 2, busLineId:1, expectedArrivalTime: \"2011-10-05T14:48:00.000Z\", departureTime: \"2011-10-05T14:48:00.000Z\"}){\n        id\n        expectedArrivalTime\n        departureTime\n    }\n    quattro: insertBusPath(data: {busStopId: 3, busLineId:1, expectedArrivalTime: \"2011-10-05T14:48:00.000Z\", departureTime: \"2011-10-05T14:48:00.000Z\"}){\n        id\n        expectedArrivalTime\n        departureTime\n    }\n    cinque: insertBusPath(data: {busStopId: 4, busLineId:1, expectedArrivalTime: \"2011-10-05T14:48:00.000Z\", departureTime: \"2011-10-05T14:48:00.000Z\"}){\n        id\n        expectedArrivalTime\n        departureTime\n    }\n}",
 								"variables": ""
 							}
 						},
@@ -774,7 +774,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation insertBooking{\n    insertBooking(data: {seatId: 1, passengerId:3, busPathStartId: 1, busPathEndId: 1}){\n        id\n        seat{\n            id\n        }\n        passenger {\n            id\n        }\n    }\n   \n}",
+								"query": "mutation insertBooking{\n    milano1: insertBooking(data: {seatId: 1, passengerId:1, busPathStartId: 1, busPathEndId: 2}){\n        id\n        seat{\n            id\n        }\n        passenger {\n            id\n        }\n    }\n    milano2: insertBooking(data: {seatId: 2, passengerId:2, busPathStartId: 1, busPathEndId: 2}){\n        id\n        seat{\n            id\n        }\n        passenger {\n            id\n        }\n    }    \n    bologna1: insertBooking(data: {seatId: 3, passengerId:3, busPathStartId: 3, busPathEndId: 4}){\n        id\n        seat{\n            id\n        }\n        passenger {\n            id\n        }\n    }      \n    bologna2: insertBooking(data: {seatId: 4, passengerId:4, busPathStartId: 3, busPathEndId: 4}){\n        id\n        seat{\n            id\n        }\n        passenger {\n            id\n        }\n    }    \n}",
 								"variables": ""
 							}
 						},
