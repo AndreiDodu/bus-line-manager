@@ -1,0 +1,16 @@
+
+schema {
+    query: Query
+}
+
+#--------------------------------
+type Bus {
+
+    id: ID!
+    capacity: Int!
+}
+#--------------------------------
+
+type Query {
+    getBus(id: ID!): Bus
+}

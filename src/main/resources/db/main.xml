@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+	<property name="schemaName" value="" />
+	<property name="dbms" value="mysql,oracle,postgresql,h2,hsqldb,mssql"/>
+	<property name="autoIncrement" value="true" dbms="mssql,mysql" />
+	<property name="autoIncrement" value="false" dbms="h2,oracle,postgresql" />
+	<property name="defaultTimeStamp" value="NOW()" dbms="postgres"/>
+	<property name="clob" value="CLOB" dbms="mysql"/>
+
+	<include file="iteration-0/db-1.xml" relativeToChangelogFile="true"/>
+</databaseChangeLog>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+	
+	<changeSet id="create_table_bus_stop" author="Andrei Dodu">
+
+	<!-- BUS_LINE TABLE -->
+		<createTable tableName="bus_line" schemaName="${schemaName}">
+			<column autoIncrement="${autoIncrement}" name="bus_line_id" type="BIGINT">
+				<constraints nullable="false" primaryKey="true"	primaryKeyName="pk_bus_line_seq" />
+			</column>
+			<column name="name" type="VARCHAR(255)"/>
+			<column name="insert_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="update_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="version" type="INT" />
+		</createTable>
+	<!-- BUS_STOP TABLE -->	
+		<createTable tableName="bus_stop" schemaName="${schemaName}">
+			<column autoIncrement="${autoIncrement}" name="bus_stop_id" type="BIGINT">
+				<constraints nullable="false" primaryKey="true"	primaryKeyName="pk_bus_stop_seq" />
+			</column>
+			<column name="name" type="VARCHAR(255)"/>
+			<column name="insert_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="update_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="version" type="INT" />
+		</createTable>
+	<!-- BUS TABLE -->		
+		<createTable tableName="bus" schemaName="${schemaName}">
+			<column autoIncrement="${autoIncrement}" name="bus_id" type="BIGINT">
+				<constraints nullable="false" primaryKey="true"	primaryKeyName="pk_bus_seq" />
+			</column>
+			<column name="capacity" type="INT" />
+			<column name="insert_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="update_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="version" type="INT" />
+		</createTable>		
+	<!-- BUS_BUS_LINE TABLE -->		
+		<createTable tableName="bus_bus_line" schemaName="${schemaName}">
+			<column autoIncrement="${autoIncrement}" name="bus_bus_line_id" type="BIGINT">
+				<constraints nullable="false" primaryKey="true"	primaryKeyName="pk_bus_bus_line_seq" />
+			</column>
+			<column name="bus_line_id" type="BIGINT"/>
+			<column name="bus_id" type="BIGINT" />
+			<column name="insert_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="update_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="version" type="INT" />
+		</createTable>
+		<addForeignKeyConstraint
+			baseColumnNames="bus_line_id" baseTableName="bus_bus_line" constraintName="fk_bus_bus_line" onDelete="NO ACTION" onUpdate="NO ACTION" 
+			referencedColumnNames="bus_line_id" referencedTableName="bus_line" />
+		<addForeignKeyConstraint
+			baseColumnNames="bus_id" baseTableName="bus_bus_line" constraintName="fk_bus_id" onDelete="NO ACTION" onUpdate="NO ACTION" 
+			referencedColumnNames="bus_id" referencedTableName="bus" />			
+	<!-- SEAT TABLE -->
+		<createTable tableName="seat" schemaName="${schemaName}">
+			<column autoIncrement="${autoIncrement}" name="seat_id" type="BIGINT">
+				<constraints nullable="false" primaryKey="true"	primaryKeyName="pk_seat_seq" />
+			</column>
+			<column name="code" type="VARCHAR(3)"/>
+			<column name="insert_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="update_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="version" type="INT" />
+		</createTable>
+
+	<!-- PASSENGER TABLE -->
+		<createTable tableName="passenger" schemaName="${schemaName}">
+			<column autoIncrement="${autoIncrement}" name="passenger_id" type="BIGINT">
+				<constraints nullable="false" primaryKey="true"	primaryKeyName="pk_passenger_seq" />
+			</column>
+			<column name="first_name" type="VARCHAR(255)"/>
+			<column name="second_name" type="VARCHAR(255)"/>
+			<column name="insert_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="update_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="version" type="INT" />
+		</createTable>
+	<!-- BUS_PATH TABLE -->		
+		<createTable tableName="bus_path" schemaName="${schemaName}">
+			<column autoIncrement="${autoIncrement}" name="bus_path_id" type="BIGINT">
+				<constraints nullable="false" primaryKey="true"	primaryKeyName="pk_bus_path_seq" />
+			</column>
+			<column name="bus_stop_id" type="BIGINT"/>
+			<column name="bus_line_id" type="BIGINT" />
+			<column name="expected_arrival_time" type="TIME" />
+			<column name="departure_time" type="TIME" />
+			<column name="insert_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="update_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="version" type="INT" />
+		</createTable>		
+		<addForeignKeyConstraint
+			baseColumnNames="bus_line_id" baseTableName="bus_path" constraintName="fk_bus_path_line" onDelete="NO ACTION" onUpdate="NO ACTION" 
+			referencedColumnNames="bus_line_id" referencedTableName="bus_line" />		
+		<addForeignKeyConstraint
+			baseColumnNames="bus_stop_id" baseTableName="bus_path" constraintName="fk_bus_path_stop" onDelete="NO ACTION" onUpdate="NO ACTION" 
+			referencedColumnNames="bus_stop_id" referencedTableName="bus_stop" />			
+	<!-- BOOKING TABLE -->		
+		<createTable tableName="booking" schemaName="${schemaName}">
+			<column autoIncrement="${autoIncrement}" name="booking_id" type="BIGINT">
+				<constraints nullable="false" primaryKey="true"	primaryKeyName="pk_booking_seq" />
+			</column>
+			<column name="seat_id" type="BIGINT"/>
+			<column name="passenger_id" type="BIGINT" />
+			<column name="bus_path_id_start" type="BIGINT" />			
+			<column name="bus_path_id_end" type="BIGINT" />
+			<column name="insert_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="update_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="version" type="INT" />
+		</createTable>
+		<addForeignKeyConstraint
+			baseColumnNames="seat_id" baseTableName="booking" constraintName="fk_booking_seat" onDelete="NO ACTION" onUpdate="NO ACTION" 
+			referencedColumnNames="seat_id" referencedTableName="seat" />
+		<addForeignKeyConstraint
+			baseColumnNames="passenger_id" baseTableName="booking" constraintName="fk_booking_pass" onDelete="NO ACTION" onUpdate="NO ACTION" 
+			referencedColumnNames="passenger_id" referencedTableName="passenger" />
+		<addForeignKeyConstraint
+			baseColumnNames="bus_path_id_start" baseTableName="booking" constraintName="fk_booking_path_start" onDelete="NO ACTION" onUpdate="NO ACTION" 
+			referencedColumnNames="bus_path_id" referencedTableName="bus_path" />
+		<addForeignKeyConstraint
+			baseColumnNames="bus_path_id_end" baseTableName="booking" constraintName="fk_booking_path_end" onDelete="NO ACTION" onUpdate="NO ACTION" 
+			referencedColumnNames="bus_path_id" referencedTableName="bus_path" />									
+
+	</changeSet>
+	
+</databaseChangeLog>

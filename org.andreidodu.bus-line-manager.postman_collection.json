@@ -1,0 +1,36 @@
+{
+	"info": {
+		"_postman_id": "3f6ea532-7fa5-43f9-a596-5199e51b6d0c",
+		"name": "org.andreidodu.bus-line-manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getBus",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query getUser{\n    data0: getBus(id: 0){\n        id\n        capacity\n    }\n    data1: getBus(id: 1){\n        id\n        capacity\n    }    \n    data2: getBus(id: 2){\n        id\n        capacity\n    }        \n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/apiiis/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"apiiis",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
