@@ -549,6 +549,224 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Booking",
+			"item": [
+				{
+					"name": "getBooking",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query getBooking{\n    getBooking(id: 1){\n        id\n        seat{\n            code\n        }\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBookings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query getBookings{\n    getBookings{\n        id\n        seat{\n            code\n        }\n    }        \n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insertBooking",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation insertBooking{\n    insertBooking(data: {seatId: 1, passengerId:1, busPathStartId: 4, busPathEndId: 5}){\n        id\n        seat{\n            id\n            \n        }\n        passenger {\n            id\n            firstName\n        }\n    }\n   \n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSeat",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation updatePassenger{\n     updatePassenger(id: 3, data:  {firstName: \"Gianni\", secondName: \"Verdi\"}){\n        id\n        firstName\n        secondName\n    }\n   \n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BusPath",
+			"item": [
+				{
+					"name": "getBusPath",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query getBusPath{\n    getBusPath(id: 4){\n        id\n            expectedArrivalTime\n            departureTime\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBusPaths",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query getBusPaths{\n    getBusPaths{\n        id\n        expectedArrivalTime\n        departureTime\n        busStop{\n            id\n            name\n        }\n        busLine{\n            id\n            name\n        }\n    }        \n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insertBusPath",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation insertBusPath{\n    insertBusPath(data: {busStopId: 1, busLineId:1, expectedArrivalTime: \"2011-10-05T14:48:00.000Z\", departureTime: \"2011-10-05T14:48:00.000Z\"}){\n        id\n        expectedArrivalTime\n        departureTime\n    }\n   \n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateBusPath",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation updateBusPath{\n    updateBusPath(id:6, data: {busStopId: 2, busLineId:2, expectedArrivalTime: \"2011-10-05T14:48:00.000Z\", departureTime: \"2011-10-05T14:48:00.000Z\"}){\n        id\n        expectedArrivalTime\n        departureTime\n    }\n   \n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
