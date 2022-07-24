@@ -24,7 +24,7 @@ public class BusServiceImpl implements BusService {
 	private BusDao busDao;
 
 	@Autowired
-	private Mapper dozerMapper;
+	private Mapper mapper;
 
 	@Override
 	public Bus findById(Long id) {
@@ -44,16 +44,16 @@ public class BusServiceImpl implements BusService {
 
 	@Override
 	public Bus save(BusInput data) {
-		BusDB db = this.busDao.save(this.dozerMapper.map(data, BusDB.class));
-		return this.dozerMapper.map(db, Bus.class);
+		BusDB db = this.busDao.save(this.mapper.map(data, BusDB.class));
+		return this.mapper.map(db, Bus.class);
 	}
 
 	@Override
 	public Bus update(Long id, BusInput data) {
 		BusDB db = this.busDao.findById(id).get();
-		this.dozerMapper.map(data, db);
+		this.mapper.map(data, db);
 		db = this.busDao.save(db);
-		return this.dozerMapper.map(db, Bus.class);
+		return this.mapper.map(db, Bus.class);
 	}
 
 }
