@@ -15,11 +15,11 @@ public class BusLineMutationResolver implements GraphQLMutationResolver {
 	@Autowired
 	private BusLineService busLineService;
 
-	public BusLine insertBus(BusLineInput data) {
+	public BusLine insertBusLine(BusLineInput data) {
 		return this.busLineService.save(data);
 	}
 
-	public BusLine updateBus(Long id, BusLineInput data) {
+	public BusLine updateBusLine(Long id, BusLineInput data) {
 		return this.busLineService.update(id, data);
 	}
 

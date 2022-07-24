@@ -20,7 +20,7 @@ public class BusLineQueryResolver implements GraphQLQueryResolver {
 		return this.busLineService.findById(id);
 	}
 
-	public List<BusLine> getBuseLines() {
+	public List<BusLine> getBusLines() {
 		return this.busLineService.getAll();
 	}
 
