@@ -16,4 +16,5 @@ extend type Query {
 extend type Mutation{
 	insertSeat(data: SeatInsertInput!): Seat!
 	updateSeat(id: ID!, data: SeatInsertInput!): Seat!
+	deleteSeat(id: ID!): Boolean!
 }

@@ -13,14 +13,18 @@ import graphql.kickstart.tools.GraphQLMutationResolver;
 public class SeatMutationResolver implements GraphQLMutationResolver {
 
 	@Autowired
-	private SeatService seatService;
+	private SeatService service;
 
 	public Seat insertSeat(SeatInsertInput data) {
-		return this.seatService.save(data);
+		return this.service.save(data);
 	}
 
 	public Seat updateSeat(Long id, SeatInsertInput data) {
-		return this.seatService.update(id, data);
+		return this.service.update(id, data);
+	}
+
+	public boolean deleteSeat(Long id) {
+		return this.service.delete(id);
 	}
 
 }

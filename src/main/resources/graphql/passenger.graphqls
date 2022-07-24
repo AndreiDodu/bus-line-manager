@@ -23,4 +23,5 @@ extend type Query {
 extend type Mutation{
 	insertPassenger(data: PassengerInsertInput!): Passenger!
 	updatePassenger(id: ID!, data: PassengerUpdateInput!): Passenger!
+	deletePassenger(id: ID!): Boolean!
 }

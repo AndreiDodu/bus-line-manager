@@ -16,4 +16,5 @@ type Query {
 type Mutation{
 	insertBus(data: BusInsertInput!): Bus!
 	updateBus(id: ID!, data: BusInsertInput!): Bus!
+	deleteBus(id: ID!): Boolean!
 }

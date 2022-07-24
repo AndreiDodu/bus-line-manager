@@ -2,6 +2,7 @@ package com.andreidodu.blm.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
@@ -44,6 +45,15 @@ public abstract class CommonServiceImpl<A, B, C extends CrudRepository<B, Long>,
 		this.getMapper().map(data, db);
 		db = this.getDao().save(db);
 		return this.getMapper().map(db, typeOfA);
+	}
+
+	public boolean delete(Long id) {
+		Optional<B> dbOpt = this.getDao().findById(id);
+		if (dbOpt.isPresent()) {
+			this.getDao().delete(dbOpt.get());
+			return true;
+		}
+		return false;
 	}
 
 	public abstract C getDao();

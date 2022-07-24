@@ -22,4 +22,5 @@ extend type Query {
 extend type Mutation{
 	insertBusStop(data: BusStopInsertInput!): BusStop!
 	updateBusStop(id: ID!, data: BusStopInsertInput!): BusStop!
+	deleteBusStop(id: ID!): Boolean!
 }

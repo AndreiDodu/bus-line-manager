@@ -16,4 +16,5 @@ extend type Query {
 extend type Mutation{
 	insertBusLine(data: BusLineInsertInput!): BusLine!
 	updateBusLine(id: ID!, data: BusLineInsertInput!): BusLine!
+	deleteBusLine(id: ID!): Boolean!
 }

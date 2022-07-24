@@ -31,4 +31,5 @@ extend type Query {
 extend type Mutation{
 	insertBusPath(data: BusPathInsertInput!): BusPath!
 	updateBusPath(id: ID!, data: BusPathInsertInput!): BusPath!
+	deleteBusPath(id: ID!): Boolean!
 }

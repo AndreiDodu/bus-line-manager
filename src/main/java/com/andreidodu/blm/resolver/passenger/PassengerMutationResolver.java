@@ -13,14 +13,18 @@ import graphql.kickstart.tools.GraphQLMutationResolver;
 public class PassengerMutationResolver implements GraphQLMutationResolver {
 
 	@Autowired
-	private PassengerService passengerservice;
+	private PassengerService service;
 
 	public Passenger insertPassenger(PassengerInsertInput data) {
-		return this.passengerservice.save(data);
+		return this.service.save(data);
 	}
 
 	public Passenger updatePassenger(Long id, PassengerInsertInput data) {
-		return this.passengerservice.update(id, data);
+		return this.service.update(id, data);
+	}
+
+	public boolean deletePassenger(Long id) {
+		return this.service.delete(id);
 	}
 
 }

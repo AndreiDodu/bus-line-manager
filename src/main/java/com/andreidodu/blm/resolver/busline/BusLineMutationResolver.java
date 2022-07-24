@@ -13,14 +13,18 @@ import graphql.kickstart.tools.GraphQLMutationResolver;
 public class BusLineMutationResolver implements GraphQLMutationResolver {
 
 	@Autowired
-	private BusLineService busLineService;
+	private BusLineService service;
 
 	public BusLine insertBusLine(BusLineInsertInput data) {
-		return this.busLineService.save(data);
+		return this.service.save(data);
 	}
 
 	public BusLine updateBusLine(Long id, BusLineInsertInput data) {
-		return this.busLineService.update(id, data);
+		return this.service.update(id, data);
+	}
+	
+	public boolean deleteBusLine(Long id) {
+		return this.service.delete(id);
 	}
 
 }
