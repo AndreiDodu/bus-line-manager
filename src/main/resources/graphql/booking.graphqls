@@ -1,0 +1,32 @@
+type Booking {
+    id: ID!
+    seat: Seat!
+    passenger: Passenger!
+    busPathStart: BusPath!
+	busPathEnd: BusPath!
+}
+
+input BookingInsertInput {
+	seatId: ID!
+    passengerId: ID!
+    busPathStartId: ID!
+    busPathEndId: ID!
+}
+
+
+input BookingUpdateInput {
+	seatId: ID
+    passengerId: ID
+    busPathStartId: ID
+    busPathEndId: ID
+}
+
+extend type Query {
+    getBooking(id: ID!): Booking
+	getBookings: [Booking]
+}
+
+extend type Mutation{
+	insertBooking(data: BookingInsertInput!): Booking!
+	updateBooking(id: ID!, data: BookingUpdateInput!): Booking!
+}

@@ -5,25 +5,25 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.andreidodu.blm.dao.SeatDao;
-import com.andreidodu.blm.db.SeatDB;
-import com.andreidodu.blm.dto.Seat;
-import com.andreidodu.blm.dto.input.insert.SeatInsertInput;
-import com.andreidodu.blm.service.SeatService;
+import com.andreidodu.blm.dao.PassengerDao;
+import com.andreidodu.blm.db.PassengerDB;
+import com.andreidodu.blm.dto.Passenger;
+import com.andreidodu.blm.dto.input.insert.PassengerInsertInput;
+import com.andreidodu.blm.service.PassengerService;
 
 @Service
 @Transactional
-public class PassengerServiceImpl extends CommonServiceImpl<Seat, SeatDB, SeatDao, SeatInsertInput> implements SeatService {
+public class PassengerServiceImpl extends CommonServiceImpl<Passenger, PassengerDB, PassengerDao, PassengerInsertInput> implements PassengerService {
 
 	@Autowired
-	private SeatDao seatDao;
+	private PassengerDao passengerDao;
 
 	public PassengerServiceImpl() {
-		super(Seat.class, SeatDB.class);
+		super(Passenger.class, PassengerDB.class);
 	}
 
-	public SeatDao getDao() {
-		return this.seatDao;
+	public PassengerDao getDao() {
+		return this.passengerDao;
 	}
 
 }
