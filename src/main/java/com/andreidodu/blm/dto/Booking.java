@@ -10,7 +10,12 @@ import lombok.NoArgsConstructor;
 public class Booking {
 
 	private Long id;
-	
+
+	private Long seatId;
+	private Long passengerId;
+	private Long busPathStartId;
+	private Long busPathEndId;
+
 	private Seat seat;
 	private Passenger passenger;
 	private BusPath busPathStart;

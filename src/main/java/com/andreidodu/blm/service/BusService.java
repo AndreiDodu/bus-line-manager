@@ -5,4 +5,5 @@ import com.andreidodu.blm.dto.input.insert.BusInsertInput;
 
 public interface BusService extends CommonService<Bus, BusInsertInput> {
 
+
 }

@@ -82,8 +82,8 @@
 			</column>
 			<column name="bus_stop_id" type="BIGINT"/>
 			<column name="bus_line_id" type="BIGINT" />
-			<column name="expected_arrival_time" type="TIME" />
-			<column name="departure_time" type="TIME" />
+			<column name="expected_arrival_time" type="DATETIME" />
+			<column name="departure_time" type="DATETIME" />
 			<column name="insert_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
 			<column name="update_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
 			<column name="version" type="INT" />

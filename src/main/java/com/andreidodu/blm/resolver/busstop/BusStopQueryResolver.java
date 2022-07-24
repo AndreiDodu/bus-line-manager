@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.andreidodu.blm.dto.BusStop;
+import com.andreidodu.blm.dto.BusStopInfo;
 import com.andreidodu.blm.service.BusStopService;
 
 import graphql.kickstart.tools.GraphQLQueryResolver;
@@ -24,4 +25,11 @@ public class BusStopQueryResolver implements GraphQLQueryResolver {
 		return this.busStopService.getAll();
 	}
 
+	public BusStopInfo getGetOffPassengers(Long currentBusPathId) {
+		return this.busStopService.getGetOffPassengers(currentBusPathId);
+	}
+
+	public BusStopInfo getGetOnPassengers(Long currentBusPathId) {
+		return this.busStopService.getGetOnPassengers(currentBusPathId);
+	}
 }

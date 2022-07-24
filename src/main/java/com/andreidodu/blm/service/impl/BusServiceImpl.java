@@ -5,26 +5,25 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.andreidodu.blm.dao.BusStopDao;
-import com.andreidodu.blm.db.BusStopDB;
-import com.andreidodu.blm.dto.BusStop;
-import com.andreidodu.blm.dto.input.insert.BusStopInsertInput;
-import com.andreidodu.blm.service.BusStopService;
+import com.andreidodu.blm.dao.BusDao;
+import com.andreidodu.blm.db.BusDB;
+import com.andreidodu.blm.dto.Bus;
+import com.andreidodu.blm.dto.input.insert.BusInsertInput;
+import com.andreidodu.blm.service.BusService;
 
 @Service
 @Transactional
-public class BusServiceImpl extends CommonServiceImpl<BusStop, BusStopDB, BusStopDao, BusStopInsertInput>
-		implements BusStopService {
+public class BusServiceImpl extends CommonServiceImpl<Bus, BusDB, BusDao, BusInsertInput> implements BusService {
 
 	@Autowired
-	private BusStopDao busStopDao;
+	private BusDao busDao;
 
 	public BusServiceImpl() {
-		super(BusStop.class, BusStopDB.class);
+		super(Bus.class, BusDB.class);
 	}
 
-	public BusStopDao getDao() {
-		return this.busStopDao;
+	public BusDao getDao() {
+		return this.busDao;
 	}
 
 }

@@ -3,6 +3,11 @@ type BusStop {
     name: String!
 }
 
+type BusStopInfo{
+	passengersCount: Int!
+	passengers: [Passenger]!
+}
+
 input BusStopInsertInput {
     name: String!
 }
@@ -10,6 +15,8 @@ input BusStopInsertInput {
 extend type Query {
     getBusStop(id: ID!): BusStop
 	getBusStops: [BusStop]
+	getGetOffPassengers(currentBusPathId: ID!): BusStopInfo
+	getGetOnPassengers(currentBusPathId: ID!): BusStopInfo
 }
 
 extend type Mutation{

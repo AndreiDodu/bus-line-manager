@@ -34,13 +34,9 @@ public class BusPathDB extends CommonDB {
 	@JoinColumn(name = "bus_line_id", nullable = false)
 	private BusLineDB busLine;
 
-	@Basic
-	@Temporal(TemporalType.TIME)
 	@Column(name = "expected_arrival_time")
 	private Date expectedArrivalTime;
 
-	@Basic
-	@Temporal(TemporalType.TIME)
 	@Column(name = "departure_time")
 	private Date departureTime;
 
