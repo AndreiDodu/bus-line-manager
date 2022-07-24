@@ -1,4 +1,4 @@
-package com.andreidodu.buslinemanager.resolver;
+package com.andreidodu.buslinemanager.resolver.busstop;
 
 import java.util.List;
 

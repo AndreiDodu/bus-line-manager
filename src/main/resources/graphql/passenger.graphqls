@@ -1,0 +1,21 @@
+type Passenger {
+
+    id: ID!
+    firstName: String!
+    secondName: String!
+}
+
+input PassengerInput {
+    firstName: String!
+    secondName: String!    
+}
+
+extend type Query {
+    getPassenger(id: ID!): Passenger
+	getPassengers: [Passenger]
+}
+
+extend type Mutation{
+	insertPassenger(data: PassengerInput!): Passenger!
+	updatePassenger(id: ID!, data: PassengerInput!): Passenger!
+}

@@ -1,0 +1,19 @@
+type Seat {
+
+    id: ID!
+    code: String!
+}
+
+input SeatInput {
+    code: String
+}
+
+extend type Query {
+    getSeat(id: ID!): Seat
+	getSeats: [Seat]
+}
+
+extend type Mutation{
+	insertSeat(data: SeatInput!): Seat!
+	updateSeat(id: ID!, data: SeatInput!): Seat!
+}

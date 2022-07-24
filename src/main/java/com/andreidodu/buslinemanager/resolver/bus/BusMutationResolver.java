@@ -1,4 +1,4 @@
-package com.andreidodu.buslinemanager.resolver;
+package com.andreidodu.buslinemanager.resolver.bus;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
