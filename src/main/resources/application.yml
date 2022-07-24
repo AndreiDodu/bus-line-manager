@@ -15,4 +15,4 @@ spring:
         format_sql: false
 graphql:
   servlet:
-    mapping: /apiiis/graphql
+    mapping: /graphql
