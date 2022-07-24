@@ -1,0 +1,19 @@
+type BusStop {
+
+    id: ID!
+    name: String!
+}
+
+input BusStopInput {
+    name: String!
+}
+
+extend type Query {
+    getBusStop(id: ID!): BusStop
+	getBusStops: [BusStop]
+}
+
+extend type Mutation{
+	insertBusStop(data: BusStopInput!): BusStop!
+	updateBusStop(id: ID!, data: BusStopInput!): BusStop!
+}
