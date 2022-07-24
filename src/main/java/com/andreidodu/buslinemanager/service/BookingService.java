@@ -1,14 +1,14 @@
 package com.andreidodu.buslinemanager.service;
 
 import com.andreidodu.buslinemanager.dto.Booking;
-import com.andreidodu.buslinemanager.dto.input.BookingInput;
+import com.andreidodu.buslinemanager.dto.input.insert.BookingInsertInput;
 
 public interface BookingService {
 
 	Booking findById(Long id);
 
-	Booking save(BookingInput data);
+	Booking save(BookingInsertInput data);
 
-	Booking update(Long id, BookingInput data);
+	Booking update(Long id, BookingInsertInput data);
 
 }

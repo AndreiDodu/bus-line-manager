@@ -4,7 +4,7 @@ type BusLine {
     name: String!
 }
 
-input BusLineInput {
+input BusLineInsertInput {
     name: String!
 }
 
@@ -14,6 +14,6 @@ extend type Query {
 }
 
 extend type Mutation{
-	insertBusLine(data: BusLineInput!): BusLine!
-	updateBusLine(id: ID!, data: BusLineInput!): BusLine!
+	insertBusLine(data: BusLineInsertInput!): BusLine!
+	updateBusLine(id: ID!, data: BusLineInsertInput!): BusLine!
 }

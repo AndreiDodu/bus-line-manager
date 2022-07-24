@@ -4,7 +4,7 @@ type Seat {
     code: String!
 }
 
-input SeatInput {
+input SeatInsertInput {
     code: String
 }
 
@@ -14,6 +14,6 @@ extend type Query {
 }
 
 extend type Mutation{
-	insertSeat(data: SeatInput!): Seat!
-	updateSeat(id: ID!, data: SeatInput!): Seat!
+	insertSeat(data: SeatInsertInput!): Seat!
+	updateSeat(id: ID!, data: SeatInsertInput!): Seat!
 }

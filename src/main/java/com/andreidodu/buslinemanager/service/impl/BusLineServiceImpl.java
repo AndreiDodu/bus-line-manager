@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import com.andreidodu.buslinemanager.dao.BusLineDao;
 import com.andreidodu.buslinemanager.db.BusLineDB;
 import com.andreidodu.buslinemanager.dto.BusLine;
-import com.andreidodu.buslinemanager.dto.input.BusLineInput;
+import com.andreidodu.buslinemanager.dto.input.insert.BusLineInsertInput;
 import com.andreidodu.buslinemanager.service.BusLineService;
 
 @Service
 @Transactional
-public class BusLineServiceImpl extends CommonServiceImpl<BusLine, BusLineDB, BusLineDao, BusLineInput>
+public class BusLineServiceImpl extends CommonServiceImpl<BusLine, BusLineDB, BusLineDao, BusLineInsertInput>
 		implements BusLineService {
 
 	@Autowired

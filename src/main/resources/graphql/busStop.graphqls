@@ -4,7 +4,7 @@ type BusStop {
     name: String!
 }
 
-input BusStopInput {
+input BusStopInsertInput {
     name: String!
 }
 
@@ -14,6 +14,6 @@ extend type Query {
 }
 
 extend type Mutation{
-	insertBusStop(data: BusStopInput!): BusStop!
-	updateBusStop(id: ID!, data: BusStopInput!): BusStop!
+	insertBusStop(data: BusStopInsertInput!): BusStop!
+	updateBusStop(id: ID!, data: BusStopInsertInput!): BusStop!
 }

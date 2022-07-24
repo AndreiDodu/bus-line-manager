@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import com.andreidodu.buslinemanager.dao.SeatDao;
 import com.andreidodu.buslinemanager.db.SeatDB;
 import com.andreidodu.buslinemanager.dto.Seat;
-import com.andreidodu.buslinemanager.dto.input.SeatInput;
+import com.andreidodu.buslinemanager.dto.input.insert.SeatInsertInput;
 import com.andreidodu.buslinemanager.service.SeatService;
 
 @Service
 @Transactional
-public class PassengerServiceImpl extends CommonServiceImpl<Seat, SeatDB, SeatDao, SeatInput> implements SeatService {
+public class PassengerServiceImpl extends CommonServiceImpl<Seat, SeatDB, SeatDao, SeatInsertInput> implements SeatService {
 
 	@Autowired
 	private SeatDao seatDao;

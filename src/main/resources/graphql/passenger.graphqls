@@ -5,9 +5,14 @@ type Passenger {
     secondName: String!
 }
 
-input PassengerInput {
+input PassengerInsertInput {
     firstName: String!
     secondName: String!    
+}
+
+input PassengerUpdateInput {
+    firstName: String
+    secondName: String    
 }
 
 extend type Query {
@@ -16,6 +21,6 @@ extend type Query {
 }
 
 extend type Mutation{
-	insertPassenger(data: PassengerInput!): Passenger!
-	updatePassenger(id: ID!, data: PassengerInput!): Passenger!
+	insertPassenger(data: PassengerInsertInput!): Passenger!
+	updatePassenger(id: ID!, data: PassengerUpdateInput!): Passenger!
 }

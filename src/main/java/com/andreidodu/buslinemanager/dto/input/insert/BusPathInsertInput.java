@@ -1,11 +1,11 @@
-package com.andreidodu.buslinemanager.dto.input;
+package com.andreidodu.buslinemanager.dto.input.insert;
 
 import java.util.Date;
 
 import lombok.Data;
 
 @Data
-public class BusPathInput {
+public class BusPathInsertInput {
 	private Long busStopId;
 	private Long busLineId;
 	private Date expectedArrivalTime;
