@@ -6,31 +6,117 @@
 	},
 	"item": [
 		{
-			"name": "getBus",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "graphql",
-					"graphql": {
-						"query": "query getUser{\n    data0: getBus(id: 0){\n        id\n        capacity\n    }\n    data1: getBus(id: 1){\n        id\n        capacity\n    }    \n    data2: getBus(id: 2){\n        id\n        capacity\n    }        \n}",
-						"variables": ""
-					}
+			"name": "Bus",
+			"item": [
+				{
+					"name": "getBus",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query Bus{\n    data0: getBus(id: 0){\n        id\n        capacity\n    }\n    data1: getBus(id: 1){\n        id\n        capacity\n    }    \n    data2: getBus(id: 2){\n        id\n        capacity\n    }        \n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/apiiis/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apiiis",
+								"graphql"
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/apiiis/graphql",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"apiiis",
-						"graphql"
-					]
+				{
+					"name": "getBuses",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query getBuses{\n    getBuses{\n        id\n        capacity\n    }        \n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/apiiis/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apiiis",
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insertBus",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation Bus{\n    insertBus(data: {capacity: 38}){\n        id\n        capacity\n    }\n   \n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/apiiis/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apiiis",
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateBus",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation Bus{\n    updateBus(id: 3, data: {capacity: 90}){\n        id\n        capacity\n    }\n   \n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/apiiis/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"apiiis",
+								"graphql"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }

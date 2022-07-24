@@ -1,4 +1,4 @@
-package com.andreidodu.boilerplate;
+package com.andreidodu.buslinemanager;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

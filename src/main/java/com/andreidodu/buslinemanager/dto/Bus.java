@@ -1,9 +1,15 @@
 package com.andreidodu.buslinemanager.dto;
 
-@lombok.Data
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Bus {
 
-	private String id;
+	private Long id;
 	private Integer capacity;
 
 }

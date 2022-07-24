@@ -12,8 +12,8 @@
 				<constraints nullable="false" primaryKey="true"	primaryKeyName="pk_bus_line_seq" />
 			</column>
 			<column name="name" type="VARCHAR(255)"/>
-			<column name="insert_date" type="DATETIME" defaultValueComputed="NOW()" />
-			<column name="update_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="insert_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
+			<column name="update_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
 			<column name="version" type="INT" />
 		</createTable>
 	<!-- BUS_STOP TABLE -->	
@@ -22,8 +22,8 @@
 				<constraints nullable="false" primaryKey="true"	primaryKeyName="pk_bus_stop_seq" />
 			</column>
 			<column name="name" type="VARCHAR(255)"/>
-			<column name="insert_date" type="DATETIME" defaultValueComputed="NOW()" />
-			<column name="update_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="insert_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
+			<column name="update_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
 			<column name="version" type="INT" />
 		</createTable>
 	<!-- BUS TABLE -->		
@@ -32,8 +32,8 @@
 				<constraints nullable="false" primaryKey="true"	primaryKeyName="pk_bus_seq" />
 			</column>
 			<column name="capacity" type="INT" />
-			<column name="insert_date" type="DATETIME" defaultValueComputed="NOW()" />
-			<column name="update_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="insert_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
+			<column name="update_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
 			<column name="version" type="INT" />
 		</createTable>		
 	<!-- BUS_BUS_LINE TABLE -->		
@@ -43,8 +43,8 @@
 			</column>
 			<column name="bus_line_id" type="BIGINT"/>
 			<column name="bus_id" type="BIGINT" />
-			<column name="insert_date" type="DATETIME" defaultValueComputed="NOW()" />
-			<column name="update_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="insert_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
+			<column name="update_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
 			<column name="version" type="INT" />
 		</createTable>
 		<addForeignKeyConstraint
@@ -59,8 +59,8 @@
 				<constraints nullable="false" primaryKey="true"	primaryKeyName="pk_seat_seq" />
 			</column>
 			<column name="code" type="VARCHAR(3)"/>
-			<column name="insert_date" type="DATETIME" defaultValueComputed="NOW()" />
-			<column name="update_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="insert_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
+			<column name="update_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
 			<column name="version" type="INT" />
 		</createTable>
 
@@ -71,8 +71,8 @@
 			</column>
 			<column name="first_name" type="VARCHAR(255)"/>
 			<column name="second_name" type="VARCHAR(255)"/>
-			<column name="insert_date" type="DATETIME" defaultValueComputed="NOW()" />
-			<column name="update_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="insert_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
+			<column name="update_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
 			<column name="version" type="INT" />
 		</createTable>
 	<!-- BUS_PATH TABLE -->		
@@ -84,8 +84,8 @@
 			<column name="bus_line_id" type="BIGINT" />
 			<column name="expected_arrival_time" type="TIME" />
 			<column name="departure_time" type="TIME" />
-			<column name="insert_date" type="DATETIME" defaultValueComputed="NOW()" />
-			<column name="update_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="insert_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
+			<column name="update_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
 			<column name="version" type="INT" />
 		</createTable>		
 		<addForeignKeyConstraint
@@ -103,8 +103,8 @@
 			<column name="passenger_id" type="BIGINT" />
 			<column name="bus_path_id_start" type="BIGINT" />			
 			<column name="bus_path_id_end" type="BIGINT" />
-			<column name="insert_date" type="DATETIME" defaultValueComputed="NOW()" />
-			<column name="update_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="insert_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
+			<column name="update_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
 			<column name="version" type="INT" />
 		</createTable>
 		<addForeignKeyConstraint
