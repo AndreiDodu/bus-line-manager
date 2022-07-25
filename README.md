@@ -10,6 +10,6 @@ Work in progress...
 - make graphql queries to http://localhost:8080/graphql
 
 - orika has some compatibility problems with JDK17, so that for now add 
-  _--add-opens java.base/java.lang=ALL-UNNAMED_
+  **_--add-opens java.base/java.lang=ALL-UNNAMED_**
   in the VM Arguments of your IDE
 
