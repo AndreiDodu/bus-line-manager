@@ -13,3 +13,4 @@ Work in progress...
   **_--add-opens java.base/java.lang=ALL-UNNAMED_**
   in the VM Arguments of your IDE
 
+For further information look here: http://dodu.it/?page_id=711
