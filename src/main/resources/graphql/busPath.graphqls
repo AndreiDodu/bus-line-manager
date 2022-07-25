@@ -2,34 +2,28 @@ scalar Date
 
 type BusPath {
     id: ID!
-    busStop: BusStop!
     busLine: BusLine!
-    expectedArrivalTime: Date!
-    departureTime: Date!
+    pathDate: Date!
 }
 
 input BusPathInsertInput {
-    busStopId: ID!
     busLineId: ID!
-    expectedArrivalTime: Date!
-    departureTime: Date!
+    pathDate: Date!
 }
 
 input BusPathUpdateInput {
-    busStopId: ID
     busLineId: ID
-    expectedArrivalTime: Date
-    departureTime: Date
+    pathDate: Date
 }
 
 
-extend type Query {
-    getBusPath(id: ID!): BusPath
-	getBusPaths: [BusPath]
-}
+ extend type Query {
+   getBusPath(id: ID!): BusPath
+   getBusPaths: [BusPath]
+ }
 
-extend type Mutation{
-	insertBusPath(data: BusPathInsertInput!): BusPath!
-	updateBusPath(id: ID!, data: BusPathInsertInput!): BusPath!
-	deleteBusPath(id: ID!): Boolean!
-}
+ extend type Mutation{
+ 	insertBusPath(data: BusPathInsertInput!): BusPath!
+ 	updateBusPath(id: ID!, data: BusPathInsertInput!): BusPath!
+ 	deleteBusPath(id: ID!): Boolean!
+ }

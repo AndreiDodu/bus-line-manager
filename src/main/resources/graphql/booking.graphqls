@@ -1,24 +1,24 @@
 type Booking {
     id: ID!
+    
     seat: Seat!
     passenger: Passenger!
-    busPathStart: BusPath!
-	busPathEnd: BusPath!
+   
 }
 
 input BookingInsertInput {
 	seatId: ID!
     passengerId: ID!
-    busPathStartId: ID!
-    busPathEndId: ID!
+    busPathStepStartId: ID!
+    busPathStepEndId: ID!
 }
 
 
 input BookingUpdateInput {
 	seatId: ID
     passengerId: ID
-    busPathStartId: ID
-    busPathEndId: ID
+    busPathStepStartId: ID
+    busPathStepEndId: ID
 }
 
 extend type Query {

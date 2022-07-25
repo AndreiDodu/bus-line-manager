@@ -20,7 +20,7 @@ import com.andreidodu.blm.service.BusStopService;
 
 @Service
 @Transactional
-public class BusStopServiceImpl extends CommonServiceImpl<BusStop, BusStopDB, BusStopDao, BusStopInsertInput>
+public class BusStopServiceImpl extends CommonServiceImpl<BusStop, BusStopDB, BusStopDao, BusStopInsertInput, Long>
 		implements BusStopService {
 
 	@Autowired
@@ -39,7 +39,7 @@ public class BusStopServiceImpl extends CommonServiceImpl<BusStop, BusStopDB, Bu
 
 	public BusStopInfo getGetOffPassengers(Long currentBusStopPathId) {
 		BusStopInfo result = new BusStopInfo();
-		List<BookingDB> allPassangersThatHaveToGetOff = this.bookingDao.getByBusPathEnd_IdEquals(currentBusStopPathId);
+		List<BookingDB> allPassangersThatHaveToGetOff = this.bookingDao.getByBusPathStepEnd_IdEquals(currentBusStopPathId);
 		List<Passenger> passengers = allPassangersThatHaveToGetOff.stream().map(booking -> {
 			return this.getMapper().map(booking.getPassenger(), Passenger.class);
 		}).collect(Collectors.toList());
@@ -50,7 +50,7 @@ public class BusStopServiceImpl extends CommonServiceImpl<BusStop, BusStopDB, Bu
 
 	public BusStopInfo getGetOnPassengers(Long currentBusStopPathId) {
 		BusStopInfo result = new BusStopInfo();
-		List<BookingDB> allPassangersThatHaveToGetOn = this.bookingDao.getByBusPathStart_IdEquals(currentBusStopPathId);
+		List<BookingDB> allPassangersThatHaveToGetOn = this.bookingDao.getByBusPathStepStart_IdEquals(currentBusStopPathId);
 		List<Passenger> passengers = allPassangersThatHaveToGetOn.stream().map(booking -> {
 			return this.getMapper().map(booking.getPassenger(), Passenger.class);
 		}).collect(Collectors.toList());

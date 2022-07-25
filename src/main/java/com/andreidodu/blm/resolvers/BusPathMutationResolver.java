@@ -1,4 +1,4 @@
-package com.andreidodu.blm.resolver.buspath;
+package com.andreidodu.blm.resolvers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,7 +22,7 @@ public class BusPathMutationResolver implements GraphQLMutationResolver {
 	public BusPath updateBusPath(Long id, BusPathInsertInput data) {
 		return this.service.update(id, data);
 	}
-	
+
 	public boolean deleteBusPath(Long id) {
 		return this.service.delete(id);
 	}

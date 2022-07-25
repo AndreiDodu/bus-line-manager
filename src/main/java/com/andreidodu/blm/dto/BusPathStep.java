@@ -9,9 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BusPath {
+public class BusPathStep {
 
 	private Long id;
-	private BusLine busLine;
-	private Date pathDate;
+	private BusStop busStop;
+	private BusPath busPath;
+	private Date expectedArrivalTime;
+	private Date departureTime;
 }

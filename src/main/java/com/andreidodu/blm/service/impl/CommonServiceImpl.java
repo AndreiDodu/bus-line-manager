@@ -4,27 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.dozer.DozerBeanMapper;
-import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 
-public abstract class CommonServiceImpl<A, B, C extends CrudRepository<B, Long>, D> {
+import ma.glasnost.orika.MapperFacade;
+
+public abstract class CommonServiceImpl<A, B, C extends CrudRepository<B, E>, D, E> {
 
 	final Class<A> typeOfA;
 	final Class<B> typeOfB;
 
 	@Autowired
-	private Mapper mapper;
+	private MapperFacade mapper;
 
 	public CommonServiceImpl(Class<A> typeOfA, Class<B> typeOfB) {
 		this.typeOfA = typeOfA;
 		this.typeOfB = typeOfB;
 	}
 
-	public A findById(Long id) {
+	public A findById(E id) {
 		B db = this.getDao().findById(id).get();
-		return (new DozerBeanMapper()).map(db, typeOfA);
+		return this.getMapper().map(db, typeOfA);
 	}
 
 	public List<A> getAll() {
@@ -40,14 +40,14 @@ public abstract class CommonServiceImpl<A, B, C extends CrudRepository<B, Long>,
 		return this.getMapper().map(db, typeOfA);
 	}
 
-	public A update(Long id, D data) {
+	public A update(E id, D data) {
 		B db = this.getDao().findById(id).get();
 		this.getMapper().map(data, db);
 		db = this.getDao().save(db);
 		return this.getMapper().map(db, typeOfA);
 	}
 
-	public boolean delete(Long id) {
+	public boolean delete(E id) {
 		Optional<B> dbOpt = this.getDao().findById(id);
 		if (dbOpt.isPresent()) {
 			this.getDao().delete(dbOpt.get());
@@ -58,7 +58,7 @@ public abstract class CommonServiceImpl<A, B, C extends CrudRepository<B, Long>,
 
 	public abstract C getDao();
 
-	public Mapper getMapper() {
+	public MapperFacade getMapper() {
 		return this.mapper;
 	}
 

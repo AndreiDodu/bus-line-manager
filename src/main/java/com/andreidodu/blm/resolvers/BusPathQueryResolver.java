@@ -1,4 +1,4 @@
-package com.andreidodu.blm.resolver.buspath;
+package com.andreidodu.blm.resolvers;
 
 import java.util.List;
 
@@ -14,14 +14,14 @@ import graphql.kickstart.tools.GraphQLQueryResolver;
 public class BusPathQueryResolver implements GraphQLQueryResolver {
 
 	@Autowired
-	private BusPathService busPathService;
+	private BusPathService service;
 
 	public BusPath getBusPath(Long id) {
-		return this.busPathService.findById(id);
+		return this.service.findById(id);
 	}
 
 	public List<BusPath> getBusPaths() {
-		return this.busPathService.getAll();
+		return this.service.getAll();
 	}
 
 }

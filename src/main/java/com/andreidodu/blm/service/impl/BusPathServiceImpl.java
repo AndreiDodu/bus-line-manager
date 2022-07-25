@@ -5,21 +5,16 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.andreidodu.blm.dao.BusLineDao;
 import com.andreidodu.blm.dao.BusPathDao;
-import com.andreidodu.blm.dao.BusStopDao;
 import com.andreidodu.blm.db.BusLineDB;
 import com.andreidodu.blm.db.BusPathDB;
-import com.andreidodu.blm.db.BusStopDB;
-import com.andreidodu.blm.db.PassengerDB;
-import com.andreidodu.blm.db.SeatDB;
 import com.andreidodu.blm.dto.BusPath;
 import com.andreidodu.blm.dto.input.insert.BusPathInsertInput;
 import com.andreidodu.blm.service.BusPathService;
 
 @Service
 @Transactional
-public class BusPathServiceImpl extends CommonServiceImpl<BusPath, BusPathDB, BusPathDao, BusPathInsertInput>
+public class BusPathServiceImpl extends CommonServiceImpl<BusPath, BusPathDB, BusPathDao, BusPathInsertInput, Long>
 		implements BusPathService {
 
 	@Autowired
@@ -29,25 +24,22 @@ public class BusPathServiceImpl extends CommonServiceImpl<BusPath, BusPathDB, Bu
 		super(BusPath.class, BusPathDB.class);
 	}
 
+	public BusPathDao getDao() {
+		return this.busPathDao;
+	}
+
 	@Override
 	public BusPath save(BusPathInsertInput data) {
 
-		BusStopDB busStopDB = new BusStopDB(); 
-		busStopDB.setId(data.getBusStopId());
 		BusLineDB busLineDB = new BusLineDB();
 		busLineDB.setId(data.getBusLineId());
-		
+
 		BusPathDB busPathDB = new BusPathDB();
 		busPathDB.setBusLine(busLineDB);
-		busPathDB.setBusStop(busStopDB);
 
-		this.getMapper().map(data, busPathDB);
-		
-		return this.getMapper().map(this.busPathDao.save(busPathDB), BusPath.class);
-	}
+		super.getMapper().map(data, busPathDB);
 
-	public BusPathDao getDao() {
-		return this.busPathDao;
+		return super.getMapper().map(this.busPathDao.save(busPathDB), BusPath.class);
 	}
 
 }

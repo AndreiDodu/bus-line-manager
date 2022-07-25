@@ -13,7 +13,7 @@ import com.andreidodu.blm.service.BusService;
 
 @Service
 @Transactional
-public class BusServiceImpl extends CommonServiceImpl<Bus, BusDB, BusDao, BusInsertInput> implements BusService {
+public class BusServiceImpl extends CommonServiceImpl<Bus, BusDB, BusDao, BusInsertInput, Long> implements BusService {
 
 	@Autowired
 	private BusDao busDao;

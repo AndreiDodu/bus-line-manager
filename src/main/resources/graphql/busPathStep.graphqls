@@ -1,0 +1,35 @@
+scalar Date
+
+type BusPathStep {
+    id: ID!
+    busStop: BusStop!
+    busPath: BusPath!
+    expectedArrivalTime: Date!
+    departureTime: Date!
+}
+
+input BusPathStepInsertInput {
+    busStopId: ID!
+    busPathId: ID!
+    expectedArrivalTime: Date!
+    departureTime: Date!
+}
+
+input BusPathStepUpdateInput {
+    busStopId: ID
+    busPathId: ID
+    expectedArrivalTime: Date
+    departureTime: Date
+}
+
+
+extend type Query {
+    getBusPathStep(id: ID!): BusPathStep
+	getBusPathSteps: [BusPathStep]
+}
+
+extend type Mutation{
+	insertBusPathStep(data: BusPathStepInsertInput!): BusPathStep!
+	updateBusPathStep(id: ID!, data: BusPathStepInsertInput!): BusPathStep!
+	deleteBusPathStep(id: ID!): Boolean!
+}

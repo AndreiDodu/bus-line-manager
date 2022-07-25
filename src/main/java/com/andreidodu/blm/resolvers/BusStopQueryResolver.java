@@ -1,4 +1,4 @@
-package com.andreidodu.blm.resolver.busstop;
+package com.andreidodu.blm.resolvers;
 
 import java.util.List;
 
@@ -15,21 +15,21 @@ import graphql.kickstart.tools.GraphQLQueryResolver;
 public class BusStopQueryResolver implements GraphQLQueryResolver {
 
 	@Autowired
-	private BusStopService busStopService;
+	private BusStopService service;
 
 	public BusStop getBusStop(Long id) {
-		return this.busStopService.findById(id);
+		return this.service.findById(id);
 	}
 
 	public List<BusStop> getBusStops() {
-		return this.busStopService.getAll();
+		return this.service.getAll();
 	}
 
 	public BusStopInfo getGetOffPassengers(Long currentBusPathId) {
-		return this.busStopService.getGetOffPassengers(currentBusPathId);
+		return this.service.getGetOffPassengers(currentBusPathId);
 	}
 
 	public BusStopInfo getGetOnPassengers(Long currentBusPathId) {
-		return this.busStopService.getGetOnPassengers(currentBusPathId);
+		return this.service.getGetOnPassengers(currentBusPathId);
 	}
 }

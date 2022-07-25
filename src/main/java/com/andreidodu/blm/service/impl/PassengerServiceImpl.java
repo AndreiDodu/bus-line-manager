@@ -13,7 +13,7 @@ import com.andreidodu.blm.service.PassengerService;
 
 @Service
 @Transactional
-public class PassengerServiceImpl extends CommonServiceImpl<Passenger, PassengerDB, PassengerDao, PassengerInsertInput> implements PassengerService {
+public class PassengerServiceImpl extends CommonServiceImpl<Passenger, PassengerDB, PassengerDao, PassengerInsertInput, Long> implements PassengerService {
 
 	@Autowired
 	private PassengerDao passengerDao;

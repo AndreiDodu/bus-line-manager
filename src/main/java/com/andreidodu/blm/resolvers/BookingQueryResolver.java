@@ -1,4 +1,4 @@
-package com.andreidodu.blm.resolver.booking;
+package com.andreidodu.blm.resolvers;
 
 import java.util.List;
 
@@ -14,14 +14,14 @@ import graphql.kickstart.tools.GraphQLQueryResolver;
 public class BookingQueryResolver implements GraphQLQueryResolver {
 
 	@Autowired
-	private BookingService bookingService;
+	private BookingService service;
 
 	public Booking getBooking(Long id) {
-		return this.bookingService.findById(id);
+		return this.service.findById(id);
 	}
 
 	public List<Booking> getBookings() {
-		return this.bookingService.getAll();
+		return this.service.getAll();
 	}
 
 }

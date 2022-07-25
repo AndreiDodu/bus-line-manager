@@ -1,4 +1,4 @@
-package com.andreidodu.blm.resolver.seat;
+package com.andreidodu.blm.resolvers;
 
 import java.util.List;
 
@@ -14,14 +14,14 @@ import graphql.kickstart.tools.GraphQLQueryResolver;
 public class SeatQueryResolver implements GraphQLQueryResolver {
 
 	@Autowired
-	private SeatService seatService;
+	private SeatService service;
 
 	public Seat getSeat(Long id) {
-		return this.seatService.findById(id);
+		return this.service.findById(id);
 	}
 
 	public List<Seat> getSeats() {
-		return this.seatService.getAll();
+		return this.service.getAll();
 	}
 
 }

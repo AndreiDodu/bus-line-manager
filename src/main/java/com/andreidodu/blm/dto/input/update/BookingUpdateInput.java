@@ -6,6 +6,6 @@ import lombok.Data;
 public class BookingUpdateInput {
 	private Long seatId;
 	private Long passengerId;
-	private Long busPathStartId;
-	private Long busPathEndId;
+	private Long busPathStepStartId;
+	private Long busPathStepEndId;
 }

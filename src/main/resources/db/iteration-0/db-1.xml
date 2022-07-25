@@ -80,10 +80,8 @@
 			<column autoIncrement="${autoIncrement}" name="bus_path_id" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"	primaryKeyName="pk_bus_path_seq" />
 			</column>
-			<column name="bus_stop_id" type="BIGINT"/>
 			<column name="bus_line_id" type="BIGINT" />
-			<column name="expected_arrival_time" type="DATETIME" />
-			<column name="departure_time" type="DATETIME" />
+			<column name="path_date" type="DATETIME" />
 			<column name="insert_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
 			<column name="update_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
 			<column name="version" type="INT" />
@@ -91,9 +89,26 @@
 		<addForeignKeyConstraint
 			baseColumnNames="bus_line_id" baseTableName="bus_path" constraintName="fk_bus_path_line" onDelete="NO ACTION" onUpdate="NO ACTION" 
 			referencedColumnNames="bus_line_id" referencedTableName="bus_line" />		
+
+	<!-- BUS_PATH_STEP TABLE -->		
+		<createTable tableName="bus_path_step" schemaName="${schemaName}">
+			<column autoIncrement="${autoIncrement}" name="bus_path_step_id" type="BIGINT">
+				<constraints nullable="false" primaryKey="true"	primaryKeyName="pk_bus_path_step_seq" />
+			</column>
+			<column name="bus_stop_id" type="BIGINT"/>
+			<column name="bus_path_id" type="BIGINT" />
+			<column name="expected_arrival_time" type="DATETIME" />
+			<column name="departure_time" type="DATETIME" />
+			<column name="insert_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
+			<column name="update_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
+			<column name="version" type="INT" />
+		</createTable>		
 		<addForeignKeyConstraint
-			baseColumnNames="bus_stop_id" baseTableName="bus_path" constraintName="fk_bus_path_stop" onDelete="NO ACTION" onUpdate="NO ACTION" 
+			baseColumnNames="bus_stop_id" baseTableName="bus_path_step" constraintName="fk_bus_path_step_stop" onDelete="NO ACTION" onUpdate="NO ACTION" 
 			referencedColumnNames="bus_stop_id" referencedTableName="bus_stop" />			
+		<addForeignKeyConstraint
+			baseColumnNames="bus_path_id" baseTableName="bus_path_step" constraintName="fk_bus_path_step" onDelete="NO ACTION" onUpdate="NO ACTION" 
+			referencedColumnNames="bus_path_id" referencedTableName="bus_path" />
 	<!-- BOOKING TABLE -->		
 		<createTable tableName="booking" schemaName="${schemaName}">
 			<column autoIncrement="${autoIncrement}" name="booking_id" type="BIGINT">
@@ -101,8 +116,8 @@
 			</column>
 			<column name="seat_id" type="BIGINT"/>
 			<column name="passenger_id" type="BIGINT" />
-			<column name="bus_path_id_start" type="BIGINT" />			
-			<column name="bus_path_id_end" type="BIGINT" />
+			<column name="bus_path_step_id_start" type="BIGINT" />			
+			<column name="bus_path_step_id_end" type="BIGINT" />
 			<column name="insert_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
 			<column name="update_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
 			<column name="version" type="INT" />
@@ -114,11 +129,11 @@
 			baseColumnNames="passenger_id" baseTableName="booking" constraintName="fk_booking_pass" onDelete="NO ACTION" onUpdate="NO ACTION" 
 			referencedColumnNames="passenger_id" referencedTableName="passenger" />
 		<addForeignKeyConstraint
-			baseColumnNames="bus_path_id_start" baseTableName="booking" constraintName="fk_booking_path_start" onDelete="NO ACTION" onUpdate="NO ACTION" 
-			referencedColumnNames="bus_path_id" referencedTableName="bus_path" />
+			baseColumnNames="bus_path_step_id_start" baseTableName="booking" constraintName="fk_booking_path_start" onDelete="NO ACTION" onUpdate="NO ACTION" 
+			referencedColumnNames="bus_path_step_id" referencedTableName="bus_path_step" />
 		<addForeignKeyConstraint
-			baseColumnNames="bus_path_id_end" baseTableName="booking" constraintName="fk_booking_path_end" onDelete="NO ACTION" onUpdate="NO ACTION" 
-			referencedColumnNames="bus_path_id" referencedTableName="bus_path" />									
+			baseColumnNames="bus_path_step_id_end" baseTableName="booking" constraintName="fk_booking_path_end" onDelete="NO ACTION" onUpdate="NO ACTION" 
+			referencedColumnNames="bus_path_step_id" referencedTableName="bus_path_step" />									
 
 	</changeSet>
 	

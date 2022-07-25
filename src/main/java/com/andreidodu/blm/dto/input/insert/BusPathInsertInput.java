@@ -6,8 +6,6 @@ import lombok.Data;
 
 @Data
 public class BusPathInsertInput {
-	private Long busStopId;
 	private Long busLineId;
-	private Date expectedArrivalTime;
-	private Date departureTime;
+	private Date pathDate;
 }

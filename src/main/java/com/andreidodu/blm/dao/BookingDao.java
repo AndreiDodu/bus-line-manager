@@ -8,8 +8,8 @@ import com.andreidodu.blm.db.BookingDB;
 
 public interface BookingDao extends CrudRepository<BookingDB, Long> {
 
-	List<BookingDB> getByBusPathEnd_IdEquals(Long currentPathId);
+	List<BookingDB> getByBusPathStepEnd_IdEquals(Long currentPathId);
 
-	List<BookingDB> getByBusPathStart_IdEquals(Long currentPathId);
+	List<BookingDB> getByBusPathStepStart_IdEquals(Long currentPathId);
 
 }

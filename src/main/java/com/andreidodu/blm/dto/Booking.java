@@ -13,12 +13,10 @@ public class Booking {
 
 	private Long seatId;
 	private Long passengerId;
-	private Long busPathStartId;
-	private Long busPathEndId;
+	private Long busPathStepStartId;
+	private Long busPathStepEndId;
 
 	private Seat seat;
 	private Passenger passenger;
-	private BusPath busPathStart;
-	private BusPath busPathEnd;
 
 }

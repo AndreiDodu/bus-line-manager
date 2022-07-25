@@ -1,4 +1,4 @@
-package com.andreidodu.blm.resolver.booking;
+package com.andreidodu.blm.resolvers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

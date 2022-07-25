@@ -13,7 +13,7 @@ import com.andreidodu.blm.service.SeatService;
 
 @Service
 @Transactional
-public class SeatServiceImpl extends CommonServiceImpl<Seat, SeatDB, SeatDao, SeatInsertInput> implements SeatService {
+public class SeatServiceImpl extends CommonServiceImpl<Seat, SeatDB, SeatDao, SeatInsertInput, Long> implements SeatService {
 
 	@Autowired
 	private SeatDao seatDao;

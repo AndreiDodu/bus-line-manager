@@ -2,6 +2,7 @@ package com.andreidodu.blm.db;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,20 +22,26 @@ public class BookingDB extends CommonDB {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "seat_id", nullable = false)
 	private SeatDB seat;
 
-	@ManyToOne
+	@Column(name = "seat_id", insertable = false, updatable = false)
+	private Long seatId;
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "passenger_id", nullable = false)
 	private PassengerDB passenger;
 
-	@ManyToOne
-	@JoinColumn(name = "bus_path_id_start", nullable = false)
-	private BusPathDB busPathStart;
+	@Column(name = "passenger_id", insertable = false, updatable = false)
+	private Long passengerId;
 
-	@ManyToOne
-	@JoinColumn(name = "bus_path_id_end", nullable = false)
-	private BusPathDB busPathEnd;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "bus_path_step_id_start", nullable = false)
+	private BusPathStepDB busPathStepStart;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "bus_path_step_id_end", nullable = false)
+	private BusPathStepDB busPathStepEnd;
 
 }
