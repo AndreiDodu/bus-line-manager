@@ -1,20 +1,22 @@
 package com.andreidodu.blm.service.impl;
 
-import javax.transaction.Transactional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.andreidodu.blm.dao.BusPathStepDao;
 import com.andreidodu.blm.db.BusPathDB;
 import com.andreidodu.blm.db.BusPathStepDB;
 import com.andreidodu.blm.db.BusStopDB;
 import com.andreidodu.blm.dto.BusPathStep;
 import com.andreidodu.blm.dto.input.insert.BusPathStepInsertInput;
+import com.andreidodu.blm.repository.BusPathStepDao;
 import com.andreidodu.blm.service.BusPathStepService;
 
 @Service
-@Transactional
+@Transactional(propagation = Propagation.REQUIRED)
 public class BusPathStepServiceImpl
 		extends CommonServiceImpl<BusPathStep, BusPathStepDB, BusPathStepDao, BusPathStepInsertInput, Long>
 		implements BusPathStepService {
@@ -42,9 +44,15 @@ public class BusPathStepServiceImpl
 		busPathStepDB.setBusPath(busPathDB);
 		busPathStepDB.setBusStop(busStopDB);
 
-		this.getMapper().map(data, busPathDB);
+		this.getMapper().map(data, busPathStepDB);
 
 		return this.getMapper().map(this.busPathDao.save(busPathStepDB), BusPathStep.class);
+	}
+
+	@Override
+	public List<BusPathStep> findByBusPathId(Long busPathId) {
+		Iterable<BusPathStepDB> dbs = this.busPathDao.findByBusPath_Id(busPathId);
+		return this.getMapper().mapAsList(dbs, BusPathStep.class);
 	}
 
 }

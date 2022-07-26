@@ -2,8 +2,10 @@ scalar Date
 
 type BusPath {
     id: ID!
-    busLine: BusLine!
+    busLineId: ID!
     pathDate: Date!
+    busLine: BusLine!
+    busPathSteps: [BusPathStep]
 }
 
 input BusPathInsertInput {

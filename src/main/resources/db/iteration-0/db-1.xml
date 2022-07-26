@@ -103,6 +103,16 @@
 			<column name="update_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
 			<column name="version" type="INT" />
 		</createTable>		
+		<addNotNullConstraint 
+           columnName="expected_arrival_time"  
+           schemaName="${schemaName}" 
+           tableName="bus_path_step"  
+          /> 		
+		<addNotNullConstraint 
+           columnName="departure_time"  
+           schemaName="${schemaName}" 
+           tableName="bus_path_step"  
+          /> 	          
 		<addForeignKeyConstraint
 			baseColumnNames="bus_stop_id" baseTableName="bus_path_step" constraintName="fk_bus_path_step_stop" onDelete="NO ACTION" onUpdate="NO ACTION" 
 			referencedColumnNames="bus_stop_id" referencedTableName="bus_stop" />			

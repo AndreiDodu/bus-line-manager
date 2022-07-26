@@ -29,9 +29,9 @@ public class BusLineDB extends CommonDB {
 	private String name;
 
 	@ManyToMany(mappedBy = "busLines")
-	private Set<BusDB> employees = new HashSet<>();
+	private Set<BusDB> buses = new HashSet<>();
 
-	@OneToMany(mappedBy = "busLine", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "busLine")
 	private Set<BusPathDB> busPaths;
 
 }

@@ -1,6 +1,7 @@
 package com.andreidodu.blm.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,6 +13,8 @@ import lombok.NoArgsConstructor;
 public class BusPath {
 
 	private Long id;
-	private BusLine busLine;
+	private Long busLineId;
 	private Date pathDate;
+	private BusLine busLine;
+	List<BusPathStep> busPathSteps;
 }

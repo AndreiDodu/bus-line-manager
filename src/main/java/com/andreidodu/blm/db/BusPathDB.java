@@ -1,11 +1,10 @@
 package com.andreidodu.blm.db;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,8 +31,8 @@ public class BusPathDB extends CommonDB {
 
 	@Column(name = "path_date")
 	private Date pathDate;
-	
-	@OneToMany(mappedBy = "busPath", fetch = FetchType.LAZY)
-	private Set<BusPathStepDB> busPathSteps;
+
+	@OneToMany(mappedBy = "busPath")
+	private List<BusPathStepDB> busPathSteps;
 
 }

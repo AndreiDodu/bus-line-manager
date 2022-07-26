@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.andreidodu.blm.dto.Booking;
+import com.andreidodu.blm.dto.BusPath;
 import com.andreidodu.blm.dto.Passenger;
 import com.andreidodu.blm.dto.Seat;
+import com.andreidodu.blm.service.BusPathService;
 import com.andreidodu.blm.service.PassengerService;
 import com.andreidodu.blm.service.SeatService;
 
@@ -20,6 +22,9 @@ public class FieldBookingResolver implements GraphQLResolver<Booking> {
 	@Autowired
 	private PassengerService passengerService;
 
+	@Autowired
+	private BusPathService busPathService;
+
 	public Passenger getPassenger(Booking booking) {
 		return this.passengerService.findById(booking.getPassengerId());
 	}
@@ -28,4 +33,11 @@ public class FieldBookingResolver implements GraphQLResolver<Booking> {
 		return this.seatService.findById(booking.getSeatId());
 	}
 
+	public BusPath getBusPathStepStart(Booking booking) {
+		return this.busPathService.findById(booking.getBusPathStepStartId());
+	}
+
+	public BusPath getBusPathStepEnd(Booking booking) {
+		return this.busPathService.findById(booking.getBusPathStepEndId());
+	}
 }

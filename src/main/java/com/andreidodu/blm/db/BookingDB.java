@@ -39,9 +39,15 @@ public class BookingDB extends CommonDB {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "bus_path_step_id_start", nullable = false)
 	private BusPathStepDB busPathStepStart;
+	
+	@Column(name = "bus_path_step_id_start", insertable = false, updatable = false)
+	private Long busPathStepStartId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "bus_path_step_id_end", nullable = false)
 	private BusPathStepDB busPathStepEnd;
+	
+	@Column(name = "bus_path_step_id_end", insertable = false, updatable = false)
+	private Long busPathStepEndId;
 
 }

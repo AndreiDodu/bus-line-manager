@@ -56,9 +56,9 @@ public abstract class CommonServiceImpl<A, B, C extends CrudRepository<B, E>, D,
 		return false;
 	}
 
-	public abstract C getDao();
+	protected abstract C getDao();
 
-	public MapperFacade getMapper() {
+	protected MapperFacade getMapper() {
 		return this.mapper;
 	}
 

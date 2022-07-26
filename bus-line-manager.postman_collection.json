@@ -743,7 +743,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query getBusPath{\n    getBusPath(id: 4){\n        id\n            pathDate\n            busLine{\n                name\n            }\n    }\n}",
+								"query": "query getBusPath{\n    getBusPath(id: 1){\n        id\n        pathDate\n        busLine{\n            name\n        }\n\n    }\n}",
 								"variables": ""
 							}
 						},
@@ -769,7 +769,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query getBusPaths{\n    getBusPaths{\n        id\n        pathDate\n        busLine{\n            id\n            name\n        }\n    }        \n}",
+								"query": "query getBusPaths{\n    getBusPaths{\n        id\n        pathDate\n        busPathSteps{\n            id\n            busStop{\n                name\n            }\n            expectedArrivalTime\n            departureTime\n        }\n    }        \n}",
 								"variables": ""
 							}
 						},
@@ -1013,7 +1013,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query getBooking{\n    getBooking(id: 1){\n        id\n        seat{\n            code\n        }\n    }\n}",
+								"query": "query getBooking{\n    getBooking(id: 1){\n        id\n        seat{\n            code\n        }\n        passenger{\n            firstName\n        }\n    }\n}",
 								"variables": ""
 							}
 						},
@@ -1039,7 +1039,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query getBookings{\n    getBookings{\n        id\n        seat{\n            code\n        }\n    }        \n}",
+								"query": "query getBookings{\n    getBookings{\n        id\n        seat{\n            code\n        }\n        passenger{\n            firstName\n            secondName\n        }\n        \n    }        \n}",
 								"variables": ""
 							}
 						},
@@ -1136,6 +1136,32 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "InsertAll",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation Bus {\n    uno: insertBus(data: {capacity: 38}){\n        id\n        capacity\n    }\n    due: insertBus(data: {capacity: 40}){\n        id\n        capacity\n    }\n    tre: insertBus(data: {capacity: 42}){\n        id\n        capacity\n    }    \n    qua: insertBus(data: {capacity: 44}){\n        id\n        capacity\n    }       \n\n    uno1: insertBusLine(data: {name: \"Paris-Bologna\"}){\n        id\n        name\n    }\n    due2: insertBusLine(data: {name: \"Paris-Berlino\"}){\n        id\n        name\n    }\n    tre3: insertBusLine(data: {name: \"Paris-Barcelona\"}){\n        id\n        name\n    }\n    qua4: insertBusLine(data: {name: \"Paris-Chisinau\"}){\n        id\n        name\n    }\n   \n   paris: insertBusStop(data: {name: \"Paris\"}){\n        id\n        name\n    }\n    milano: insertBusStop(data: {name: \"Milano\"}){\n        id\n        name\n    }\n    piacenaza: insertBusStop(data: {name: \"Piacenza\"}){\n        id\n        name\n    }\n    bologna: insertBusStop(data: {name: \"Bologna\"}){\n        id\n        name\n    }\n    lecce: insertBusStop(data: {name: \"Lecce\"}){\n        id\n        name\n    }\n\n     c10: insertSeat(data: {code: \"C10\"}){\n        id\n        code\n    }\n    c11: insertSeat(data: {code: \"C11\"}){\n        id\n        code\n    }\n    c12: insertSeat(data: {code: \"C12\"}){\n        id\n        code\n    }\n    c13: insertSeat(data: {code: \"C13\"}){\n        id\n        code\n    }\n    c14: insertSeat(data: {code: \"C14\"}){\n        id\n        code\n    }  \n\n    rossi: insertPassenger(data: {firstName: \"Roberto\", secondName: \"Rossi\"}){\n        id\n        firstName\n        secondName\n    }\n    verdi: insertPassenger(data: {firstName: \"Francesco\", secondName: \"Verdi\"}){\n        id\n        firstName\n        secondName\n    }\n    gialli: insertPassenger(data: {firstName: \"Emiliano\", secondName: \"Gialli\"}){\n        id\n        firstName\n        secondName\n    }\n    neri: insertPassenger(data: {firstName: \"Federico\", secondName: \"Neri\"}){\n        id\n        firstName\n        secondName\n    }\n    bianchi: insertPassenger(data: {firstName: \"Ferdinando\", secondName: \"Bianchi\"}){\n        id\n        firstName\n        secondName\n    }\n    strano: insertPassenger(data: {firstName: \"Giuseppe\", secondName: \"Strano\"}){\n        id\n        firstName\n        secondName\n    }  \n\n    due1: insertBusPath(data: {busLineId:1, pathDate: \"2011-10-05T14:48:00.000Z\"}){\n        id\n        pathDate\n\n    }\n    tre2: insertBusPath(data: {busLineId:2, pathDate: \"2011-10-05T14:48:00.000Z\"}){\n        id\n        pathDate\n\n    }\n    quattro3: insertBusPath(data: {busLineId:3, pathDate: \"2011-10-05T14:48:00.000Z\"}){\n        id\n        pathDate\n\n    }\n    cinque4: insertBusPath(data: {busLineId:3, pathDate: \"2011-10-05T14:48:00.000Z\"}){\n        id\n        pathDate\n    }\n    sei5: insertBusPath(data: {busLineId:3, pathDate: \"2011-10-05T14:48:00.000Z\"}){\n        id\n        pathDate\n    }  \n\n     due6: insertBusPathStep(data: {busStopId: 1, busPathId:1, expectedArrivalTime: \"2011-10-05T14:48:00.000Z\", departureTime: \"2011-10-05T14:48:00.000Z\"}){\n        id\n    }\n    tre5: insertBusPathStep(data: {busStopId: 2, busPathId:1, expectedArrivalTime: \"2011-10-05T14:48:00.000Z\", departureTime: \"2011-10-05T14:48:00.000Z\"}){\n        id\n    }\n    quattro4: insertBusPathStep(data: {busStopId: 3, busPathId:1, expectedArrivalTime: \"2011-10-05T14:48:00.000Z\", departureTime: \"2011-10-05T14:48:00.000Z\"}){\n        id\n    }\n    cinque3: insertBusPathStep(data: {busStopId: 4, busPathId:1, expectedArrivalTime: \"2011-10-05T14:48:00.000Z\", departureTime: \"2011-10-05T14:48:00.000Z\"}){\n        id\n        }  \n\n         milano1: insertBooking(data: {seatId: 1, passengerId:1, busPathStepStartId: 1, busPathStepEndId: 2}){\n        id\n        seat{\n            id\n        }\n        passenger {\n            id\n        }\n    }\n    milano2: insertBooking(data: {seatId: 2, passengerId:2, busPathStepStartId: 1, busPathStepEndId: 2}){\n        id\n        seat{\n            id\n        }\n        passenger {\n            id\n        }\n    }    \n    bologna1: insertBooking(data: {seatId: 3, passengerId:3, busPathStepStartId: 3, busPathStepEndId: 4}){\n        id\n        seat{\n            id\n        }\n        passenger {\n            id\n        }\n    }      \n    bologna2: insertBooking(data: {seatId: 4, passengerId:4, busPathStepStartId: 3, busPathStepEndId: 4}){\n        id\n        seat{\n            id\n        }\n        passenger {\n            id\n        }\n    }            \n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

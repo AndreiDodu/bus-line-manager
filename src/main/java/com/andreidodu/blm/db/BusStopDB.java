@@ -26,7 +26,7 @@ public class BusStopDB extends CommonDB {
 	@Column(name = "name", length = 255, nullable = false)
 	private String name;
 
-	@OneToMany(mappedBy = "busStop", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "busStop")
 	private Set<BusPathStepDB> busPaths;
 
 }

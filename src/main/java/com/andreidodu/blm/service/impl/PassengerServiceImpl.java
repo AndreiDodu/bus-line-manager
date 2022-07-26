@@ -1,19 +1,21 @@
 package com.andreidodu.blm.service.impl;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.andreidodu.blm.dao.PassengerDao;
 import com.andreidodu.blm.db.PassengerDB;
 import com.andreidodu.blm.dto.Passenger;
 import com.andreidodu.blm.dto.input.insert.PassengerInsertInput;
+import com.andreidodu.blm.repository.PassengerDao;
 import com.andreidodu.blm.service.PassengerService;
 
 @Service
-@Transactional
-public class PassengerServiceImpl extends CommonServiceImpl<Passenger, PassengerDB, PassengerDao, PassengerInsertInput, Long> implements PassengerService {
+@Transactional(propagation = Propagation.REQUIRED)
+public class PassengerServiceImpl
+		extends CommonServiceImpl<Passenger, PassengerDB, PassengerDao, PassengerInsertInput, Long>
+		implements PassengerService {
 
 	@Autowired
 	private PassengerDao passengerDao;
