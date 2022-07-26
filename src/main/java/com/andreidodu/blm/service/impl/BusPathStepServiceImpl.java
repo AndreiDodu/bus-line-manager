@@ -42,7 +42,7 @@ public class BusPathStepServiceImpl
 
 		BusPathStepDB busPathStepDB = new BusPathStepDB();
 		busPathStepDB.setBusPath(busPathDB);
-		busPathStepDB.setBusStop(busStopDB);
+		// busPathStepDB.setBusStop(busStopDB);
 
 		this.getMapper().map(data, busPathStepDB);
 

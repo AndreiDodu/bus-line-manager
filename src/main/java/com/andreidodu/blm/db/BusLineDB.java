@@ -28,10 +28,10 @@ public class BusLineDB extends CommonDB {
 	@Column(name = "name", length = 255, nullable = false)
 	private String name;
 
-	@ManyToMany(mappedBy = "busLines")
+	@ManyToMany(mappedBy = "busLines", fetch = FetchType.LAZY)
 	private Set<BusDB> buses = new HashSet<>();
 
-	@OneToMany(mappedBy = "busLine")
+	@OneToMany(mappedBy = "busLine", fetch = FetchType.LAZY)
 	private Set<BusPathDB> busPaths;
 
 }

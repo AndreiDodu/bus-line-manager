@@ -13,7 +13,7 @@ public class BusPathStep {
 
 	private Long id;
 	private BusStop busStop;
-	private BusPath busPath;
+	// private BusPath busPath;
 	private Date expectedArrivalTime;
 	private Date departureTime;
 }

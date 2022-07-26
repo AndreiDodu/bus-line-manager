@@ -4,6 +4,7 @@ type BusPath {
     id: ID!
     busLineId: ID!
     pathDate: Date!
+    busLine: BusLine!
     busPathSteps: [BusPathStep]
 }
 

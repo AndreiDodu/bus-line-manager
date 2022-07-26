@@ -3,7 +3,7 @@ scalar Date
 type BusPathStep {
     id: ID!
     busStop: BusStop!
-    busPath: BusPath!
+    #busPath: BusPath!
     expectedArrivalTime: Date!
     departureTime: Date!
 }

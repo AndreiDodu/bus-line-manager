@@ -19,10 +19,12 @@ public class MapperConfiguration extends ConfigurableMapper {
 	public void configure(MapperFactory mapperFactory) {
 
 		mapperFactory.classMap(BookingDB.class, Booking.class).exclude("passenger").exclude("seat")
-				.exclude("busPathStepStart").exclude("busPathStepEnd").byDefault().register();
+				.exclude("busPathStepStart").exclude("busPathStepEnd")
 
-		mapperFactory.classMap(BusPathDB.class, BusPath.class).exclude("busPathSteps").exclude("busLine").byDefault()
-				.register();
+				.byDefault().register();
+
+		mapperFactory.classMap(BusPathDB.class, BusPath.class).exclude("busPathSteps").exclude("busLine")
+				.field("busLine.id", "busLineId").byDefault().register();
 
 		mapperFactory.classMap(BusPathStepDB.class, BusPathStep.class).exclude("busStop").exclude("busPath").byDefault()
 				.register();

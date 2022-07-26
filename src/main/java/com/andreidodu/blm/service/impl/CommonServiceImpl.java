@@ -6,9 +6,12 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import ma.glasnost.orika.MapperFacade;
 
+@Transactional(propagation = Propagation.REQUIRED)
 public abstract class CommonServiceImpl<A, B, C extends CrudRepository<B, E>, D, E> {
 
 	final Class<A> typeOfA;
