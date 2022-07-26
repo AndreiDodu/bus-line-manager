@@ -42,9 +42,10 @@ public class BusPathStepServiceImpl
 
 		BusPathStepDB busPathStepDB = new BusPathStepDB();
 		busPathStepDB.setBusPath(busPathDB);
-		// busPathStepDB.setBusStop(busStopDB);
-
-		this.getMapper().map(data, busPathStepDB);
+		busPathStepDB.setBusStop(busStopDB);
+		busPathStepDB.setExpectedArrivalTime(data.getExpectedArrivalTime());
+		busPathStepDB.setDepartureTime(data.getDepartureTime());
+		// this.getMapper().map(data, busPathStepDB);
 
 		return this.getMapper().map(this.busPathDao.save(busPathStepDB), BusPathStep.class);
 	}
@@ -52,7 +53,8 @@ public class BusPathStepServiceImpl
 	@Override
 	public List<BusPathStep> findByBusPathId(Long busPathId) {
 		Iterable<BusPathStepDB> dbs = this.busPathDao.findByBusPath_Id(busPathId);
-		return this.getMapper().mapAsList(dbs, BusPathStep.class);
+		List<BusPathStep> result = this.getMapper().mapAsList(dbs, BusPathStep.class);
+		return result;
 	}
 
 }

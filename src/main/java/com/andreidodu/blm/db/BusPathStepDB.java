@@ -13,10 +13,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @Entity
 @Table(name = "bus_path_step")
+@ToString
 public class BusPathStepDB extends CommonDB {
 
 	@Id
@@ -27,6 +29,9 @@ public class BusPathStepDB extends CommonDB {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "bus_stop_id", nullable = false)
 	private BusStopDB busStop;
+
+	@Column(name = "bus_stop_id", insertable = false, updatable = false)
+	private Long busStopId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "bus_path_id", nullable = false)
