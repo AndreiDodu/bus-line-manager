@@ -53,6 +53,9 @@ public class BusPathStepServiceImpl
 	@Override
 	public List<BusPathStep> findByBusPathId(Long busPathId) {
 		Iterable<BusPathStepDB> dbs = this.busPathDao.findByBusPath_Id(busPathId);
+		// XXX orika calls getBusStop even if it should not do that
+		// so that hibernate makes more queries than expected
+		// TODO do something
 		List<BusPathStep> result = this.getMapper().mapAsList(dbs, BusPathStep.class);
 		return result;
 	}
