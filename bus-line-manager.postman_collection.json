@@ -743,7 +743,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query getBusPath{\n    getBusPath(id: 1){\n        id\n        pathDate\n        busLine{\n            name\n        }\n\n    }\n}",
+								"query": "query getBusPath{\n    getBusPath(id: 1){\n        id\n        pathDate\n        busLine {\n            name\n         }\n        busPathSteps{\n            id\n            busStop{\n                name\n            }\n        }\n    }}",
 								"variables": ""
 							}
 						},
