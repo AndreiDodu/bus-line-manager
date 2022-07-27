@@ -26,8 +26,6 @@ public class MapperConfiguration extends ConfigurableMapper {
 						.register();
 
 		mapperFactory.classMap(BusPathDB.class, BusPath.class)
-						.exclude("busLine")
-						.field("busLine.id", "busLineId")
 						.byDefault()
 						.register();
 

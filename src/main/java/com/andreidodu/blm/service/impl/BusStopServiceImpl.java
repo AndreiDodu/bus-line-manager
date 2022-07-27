@@ -40,7 +40,7 @@ public class BusStopServiceImpl extends CommonServiceImpl<BusStop, BusStopDB, Bu
 	public BusStopInfo getGetOffPassengers(Long currentBusStopPathId) {
 		BusStopInfo result = new BusStopInfo();
 		List<BookingDB> allPassangersThatHaveToGetOff = this.bookingDao
-				.getByBusPathStepEnd_IdEquals(currentBusStopPathId);
+				.getByBusPathStepEndIdEquals(currentBusStopPathId);
 		List<Passenger> passengers = allPassangersThatHaveToGetOff.stream().map(booking -> {
 			return this.getMapper().map(booking.getPassenger(), Passenger.class);
 		}).collect(Collectors.toList());
@@ -52,7 +52,7 @@ public class BusStopServiceImpl extends CommonServiceImpl<BusStop, BusStopDB, Bu
 	public BusStopInfo getGetOnPassengers(Long currentBusStopPathId) {
 		BusStopInfo result = new BusStopInfo();
 		List<BookingDB> allPassangersThatHaveToGetOn = this.bookingDao
-				.getByBusPathStepStart_IdEquals(currentBusStopPathId);
+				.getByBusPathStepStartIdEquals(currentBusStopPathId);
 		List<Passenger> passengers = allPassangersThatHaveToGetOn.stream().map(booking -> {
 			return this.getMapper().map(booking.getPassenger(), Passenger.class);
 		}).collect(Collectors.toList());

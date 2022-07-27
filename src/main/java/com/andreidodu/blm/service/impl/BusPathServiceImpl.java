@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.andreidodu.blm.db.BusLineDB;
 import com.andreidodu.blm.db.BusPathDB;
 import com.andreidodu.blm.dto.BusPath;
 import com.andreidodu.blm.dto.input.insert.BusPathInsertInput;
@@ -26,20 +25,6 @@ public class BusPathServiceImpl extends CommonServiceImpl<BusPath, BusPathDB, Bu
 
 	public BusPathDao getDao() {
 		return this.busPathDao;
-	}
-
-	@Override
-	public BusPath save(BusPathInsertInput data) {
-
-		BusLineDB busLineDB = new BusLineDB();
-		busLineDB.setId(data.getBusLineId());
-
-		BusPathDB busPathDB = new BusPathDB();
-		busPathDB.setBusLine(busLineDB);
-
-		super.getMapper().map(data, busPathDB);
-
-		return super.getMapper().map(this.busPathDao.save(busPathDB), BusPath.class);
 	}
 
 }

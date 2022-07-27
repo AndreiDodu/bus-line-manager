@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.andreidodu.blm.db.BusPathDB;
 import com.andreidodu.blm.db.BusPathStepDB;
-import com.andreidodu.blm.db.BusStopDB;
 import com.andreidodu.blm.dto.BusPathStep;
 import com.andreidodu.blm.dto.input.insert.BusPathStepInsertInput;
 import com.andreidodu.blm.repository.BusPathStepDao;
@@ -33,26 +31,8 @@ public class BusPathStepServiceImpl
 	}
 
 	@Override
-	public BusPathStep save(BusPathStepInsertInput data) {
-
-		BusStopDB busStopDB = new BusStopDB();
-		busStopDB.setId(data.getBusStopId());
-		BusPathDB busPathDB = new BusPathDB();
-		busPathDB.setId(data.getBusPathId());
-
-		BusPathStepDB busPathStepDB = new BusPathStepDB();
-		busPathStepDB.setBusPath(busPathDB);
-		busPathStepDB.setBusStop(busStopDB);
-		busPathStepDB.setExpectedArrivalTime(data.getExpectedArrivalTime());
-		busPathStepDB.setDepartureTime(data.getDepartureTime());
-		// this.getMapper().map(data, busPathStepDB);
-
-		return this.getMapper().map(this.busPathDao.save(busPathStepDB), BusPathStep.class);
-	}
-
-	@Override
 	public List<BusPathStep> findByBusPathId(Long busPathId) {
-		Iterable<BusPathStepDB> dbs = this.busPathDao.findByBusPath_Id(busPathId);
+		Iterable<BusPathStepDB> dbs = this.busPathDao.findByBusPathId(busPathId);
 		// XXX orika calls getBusStop even if it should not do that
 		// so that hibernate makes more queries than expected
 		// TODO do something

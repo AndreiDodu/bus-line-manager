@@ -22,32 +22,20 @@ public class BookingDB extends CommonDB {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "seat_id", nullable = false)
-	private SeatDB seat;
-
-	@Column(name = "seat_id", insertable = false, updatable = false)
+	@Column(name = "seat_id", nullable = false)
 	private Long seatId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "passenger_id", nullable = false)
+	@JoinColumn(name = "passenger_id", nullable = false, insertable = false, updatable = false)
 	private PassengerDB passenger;
 
-	@Column(name = "passenger_id", insertable = false, updatable = false)
+	@Column(name = "passenger_id", nullable = false)
 	private Long passengerId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "bus_path_step_id_start", nullable = false)
-	private BusPathStepDB busPathStepStart;
-	
-	@Column(name = "bus_path_step_id_start", insertable = false, updatable = false)
+	@Column(name = "bus_path_step_id_start")
 	private Long busPathStepStartId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "bus_path_step_id_end", nullable = false)
-	private BusPathStepDB busPathStepEnd;
-	
-	@Column(name = "bus_path_step_id_end", insertable = false, updatable = false)
+	@Column(name = "bus_path_step_id_end")
 	private Long busPathStepEndId;
 
 }

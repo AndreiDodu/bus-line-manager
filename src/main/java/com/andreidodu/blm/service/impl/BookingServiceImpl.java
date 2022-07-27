@@ -45,10 +45,6 @@ public class BookingServiceImpl extends CommonServiceImpl<Booking, BookingDB, Bo
 		busPathEnd.setId(data.getBusPathStepEndId());
 
 		BookingDB bookingDB = new BookingDB();
-		bookingDB.setSeat(seatDB);
-		bookingDB.setPassenger(passengerDB);
-		bookingDB.setBusPathStepStart(busPathStart);
-		bookingDB.setBusPathStepEnd(busPathEnd);
 		super.getMapper().map(data, bookingDB);
 
 		return this.getMapper().map(this.bookingDao.save(bookingDB), Booking.class);
