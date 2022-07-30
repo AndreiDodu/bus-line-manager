@@ -1,11 +1,12 @@
 package com.andreidodu.blm.dto.input.insert;
+///// @formatter:off
+ 
 
-import lombok.Data;
-
-@Data
-public class BookingInsertInput {
-	private Long seatId;
-	private Long passengerId;
-	private Long busPathStepStartId;
-	private Long busPathStepEndId;
+public record BookingInsertInput(
+		long seatId, 
+		long passengerId, 
+		long busPathStepStartId, 
+		long busPathStepEndId) {
 }
+
+// @formatter:on

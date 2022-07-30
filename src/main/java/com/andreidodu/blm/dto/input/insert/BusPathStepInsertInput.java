@@ -1,13 +1,15 @@
 package com.andreidodu.blm.dto.input.insert;
 
 import java.util.Date;
+//// @formatter:off
+ 
 
-import lombok.Data;
-
-@Data
-public class BusPathStepInsertInput {
-	private Long busStopId;
-	private Long busPathId;
-	private Date expectedArrivalTime;
-	private Date departureTime;
+public record BusPathStepInsertInput(
+		long busStopId, 
+		long busPathId, 
+		Date expectedArrivalTime, 
+		Date departureTime
+		) {
 }
+
+// @formatter:on

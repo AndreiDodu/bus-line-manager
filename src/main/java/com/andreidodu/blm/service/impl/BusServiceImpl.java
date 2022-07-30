@@ -34,8 +34,8 @@ public class BusServiceImpl extends CommonServiceImpl<Bus, BusDB, BusDao, BusIns
 	@Override
 	public Bus save(BusInsertInput data) {
 		BusDB toSave = this.getMapper().mapIDTOToDB(data);
-		if (data.getBusLineId() != null) {
-			BusLineDB busLine = this.busLineDao.findById(data.getBusLineId()).get();
+		if (data.busLineId() != 0) {
+			BusLineDB busLine = this.busLineDao.findById(data.busLineId()).get();
 			toSave.getBusLines().add(busLine);
 		}
 		BusDB db = this.getDao().save(toSave);

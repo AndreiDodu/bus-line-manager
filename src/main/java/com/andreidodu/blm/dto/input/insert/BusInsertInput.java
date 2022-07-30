@@ -1,9 +1,5 @@
 package com.andreidodu.blm.dto.input.insert;
 
-import lombok.Data;
+public record BusInsertInput(int capacity, long busLineId) {
 
-@Data
-public class BusInsertInput {
-	private Integer capacity;
-	private Long busLineId;
 }
