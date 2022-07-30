@@ -9,49 +9,50 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import ma.glasnost.orika.MapperFacade;
+import com.andreidodu.blm.mapper.CommonMapper;
 
 @Transactional(propagation = Propagation.REQUIRED)
-public abstract class CommonServiceImpl<A, B, C extends CrudRepository<B, E>, D, E> {
+public abstract class CommonServiceImpl<DTOType, DBType, C extends CrudRepository<DBType, E>, InsertDTOType, E> {
 
-	final Class<A> typeOfA;
-	final Class<B> typeOfB;
+	final Class<DTOType> typeOfDTO;
+	final Class<DBType> typeOfDB;
 
 	@Autowired
-	private MapperFacade mapper;
+	private CommonMapper<DTOType, DBType, InsertDTOType> mapper;
 
-	public CommonServiceImpl(Class<A> typeOfA, Class<B> typeOfB) {
-		this.typeOfA = typeOfA;
-		this.typeOfB = typeOfB;
+	public CommonServiceImpl(Class<DTOType> typeOfA, Class<DBType> typeOfB) {
+		this.typeOfDTO = typeOfA;
+		this.typeOfDB = typeOfB;
 	}
 
-	public A findById(E id) {
-		B db = this.getDao().findById(id).get();
-		return this.getMapper().map(db, typeOfA);
+	public DTOType findById(E id) {
+		DBType db = this.getDao().findById(id).get();
+		return this.getMapper().toDTO(db);
 	}
 
-	public List<A> getAll() {
-		List<A> buses = new ArrayList<>();
+	public List<DTOType> getAll() {
+		List<DTOType> buses = new ArrayList<>();
 		this.getDao().findAll().forEach(busDB -> {
-			buses.add(getMapper().map(busDB, typeOfA));
+			buses.add(getMapper().mapToDTO(busDB));
 		});
 		return buses;
 	}
 
-	public A save(D data) {
-		B db = this.getDao().save(this.getMapper().map(data, this.typeOfB));
-		return this.getMapper().map(db, typeOfA);
+	public DTOType save(InsertDTOType data) {
+		DBType toSave = this.getMapper().mapIDTOToDB(data);
+		DBType db = this.getDao().save(toSave);
+		return this.getMapper().mapToDTO(db);
 	}
 
-	public A update(E id, D data) {
-		B db = this.getDao().findById(id).get();
-		this.getMapper().map(data, db);
+	public DTOType update(E id, InsertDTOType data) {
+		DBType db = this.getDao().findById(id).get();
+		this.getMapper().mapUDTOToDB(db, data);
 		db = this.getDao().save(db);
-		return this.getMapper().map(db, typeOfA);
+		return this.getMapper().mapToDTO(db);
 	}
 
 	public boolean delete(E id) {
-		Optional<B> dbOpt = this.getDao().findById(id);
+		Optional<DBType> dbOpt = this.getDao().findById(id);
 		if (dbOpt.isPresent()) {
 			this.getDao().delete(dbOpt.get());
 			return true;
@@ -61,7 +62,7 @@ public abstract class CommonServiceImpl<A, B, C extends CrudRepository<B, E>, D,
 
 	protected abstract C getDao();
 
-	protected MapperFacade getMapper() {
+	protected CommonMapper<DTOType, DBType, InsertDTOType> getMapper() {
 		return this.mapper;
 	}
 

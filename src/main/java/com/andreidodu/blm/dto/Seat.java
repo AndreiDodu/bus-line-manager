@@ -1,15 +1,11 @@
 package com.andreidodu.blm.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+//// @formatter:off
+ 
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class Seat {
+public record Seat (
+	long id,
+	String code
+) {}
 
-	private Long id;
-	private String code;
-
-}
+// @formatter:on

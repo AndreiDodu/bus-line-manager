@@ -1,21 +1,23 @@
 package com.andreidodu.blm.db;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
-import lombok.ToString;
 
 @Data
 @Entity
 @Table(name = "bus_path")
-@ToString
+
 public class BusPathDB extends CommonDB {
 
 	@Id
@@ -28,5 +30,8 @@ public class BusPathDB extends CommonDB {
 
 	@Column(name = "path_date")
 	private Date pathDate;
+
+	@OneToMany(mappedBy = "busPathDB", fetch = FetchType.LAZY)
+	private Set<BusPathStepDB> busPathStepsDB;
 
 }

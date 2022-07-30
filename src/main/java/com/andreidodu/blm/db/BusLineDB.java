@@ -13,10 +13,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
 @Table(name = "bus_line")
+@EqualsAndHashCode(exclude = { "buses" }, callSuper = true)
 public class BusLineDB extends CommonDB {
 
 	@Id

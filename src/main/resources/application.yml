@@ -16,3 +16,7 @@ spring:
 graphql:
   servlet:
     mapping: /graphql
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type: TRACE

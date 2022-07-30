@@ -26,18 +26,18 @@ public class FieldBookingResolver implements GraphQLResolver<Booking> {
 	private BusPathService busPathService;
 
 	public Passenger getPassenger(Booking booking) {
-		return this.passengerService.findById(booking.getPassengerId());
+		return this.passengerService.findById(booking.passengerId());
 	}
 
 	public Seat getSeat(Booking booking) {
-		return this.seatService.findById(booking.getSeatId());
+		return this.seatService.findById(booking.seatId());
 	}
 
 	public BusPath getBusPathStepStart(Booking booking) {
-		return this.busPathService.findById(booking.getBusPathStepStartId());
+		return this.busPathService.findById(booking.busPathStepStartId());
 	}
 
 	public BusPath getBusPathStepEnd(Booking booking) {
-		return this.busPathService.findById(booking.getBusPathStepEndId());
+		return this.busPathService.findById(booking.busPathStepEndId());
 	}
 }

@@ -8,6 +8,6 @@ import com.andreidodu.blm.db.BusPathStepDB;
 @Repository
 public interface BusPathStepDao extends CrudRepository<BusPathStepDB, Long> {
 
-	Iterable<BusPathStepDB> findByBusPathId(Long busPathId);
+	Iterable<BusPathStepDB> findByBusPathDB_Id(Long busPathId);
 
 }

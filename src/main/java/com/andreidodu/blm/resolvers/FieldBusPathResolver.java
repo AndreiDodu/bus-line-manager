@@ -23,10 +23,10 @@ public class FieldBusPathResolver implements GraphQLResolver<BusPath> {
 	private BusLineService busLineService;
 
 	public List<BusPathStep> getBusPathSteps(BusPath busPath) {
-		return this.busPathStepService.findByBusPathId(busPath.getId());
+		return this.busPathStepService.findByBusPathId(busPath.id());
 	}
 
 	public BusLine getBusLine(BusPath busPath) {
-		return this.busLineService.findById(busPath.getBusLineId());
+		return this.busLineService.findById(busPath.busLineId());
 	}
 }

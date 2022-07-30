@@ -1,6 +1,5 @@
 type Booking {
     id: ID!
-    
     seat: Seat!
     passenger: Passenger!
    

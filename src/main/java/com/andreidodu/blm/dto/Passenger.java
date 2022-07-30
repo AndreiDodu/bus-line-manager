@@ -1,12 +1,11 @@
 package com.andreidodu.blm.dto;
 
-import lombok.Data;
+//// @formatter:off
 
-@Data
-public class Passenger {
+public record Passenger(
+		long id, 
+		String firstName, 
+		String secondName
+) {}
 
-	private Long id;
-	private String firstName;
-	private String secondName;
-
-}
+// @formatter:on

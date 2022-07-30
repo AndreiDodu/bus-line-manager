@@ -14,6 +14,7 @@ import com.andreidodu.blm.dto.BusStop;
 import com.andreidodu.blm.dto.BusStopInfo;
 import com.andreidodu.blm.dto.Passenger;
 import com.andreidodu.blm.dto.input.insert.BusStopInsertInput;
+import com.andreidodu.blm.mapper.PassengerMapper;
 import com.andreidodu.blm.repository.BookingDao;
 import com.andreidodu.blm.repository.BusStopDao;
 import com.andreidodu.blm.service.BusStopService;
@@ -29,6 +30,9 @@ public class BusStopServiceImpl extends CommonServiceImpl<BusStop, BusStopDB, Bu
 	@Autowired
 	private BookingDao bookingDao;
 
+	@Autowired
+	private PassengerMapper passengerMapper;
+
 	public BusStopServiceImpl() {
 		super(BusStop.class, BusStopDB.class);
 	}
@@ -38,26 +42,23 @@ public class BusStopServiceImpl extends CommonServiceImpl<BusStop, BusStopDB, Bu
 	}
 
 	public BusStopInfo getGetOffPassengers(Long currentBusStopPathId) {
-		BusStopInfo result = new BusStopInfo();
 		List<BookingDB> allPassangersThatHaveToGetOff = this.bookingDao
 				.getByBusPathStepEndIdEquals(currentBusStopPathId);
 		List<Passenger> passengers = allPassangersThatHaveToGetOff.stream().map(booking -> {
-			return this.getMapper().map(booking.getPassenger(), Passenger.class);
+			return this.passengerMapper.toDTO(booking.getPassenger());
 		}).collect(Collectors.toList());
-		result.setPassengers(passengers);
-		result.setPassengersCount(passengers.size());
+
+		BusStopInfo result = new BusStopInfo(passengers.size(), passengers);
 		return result;
 	}
 
 	public BusStopInfo getGetOnPassengers(Long currentBusStopPathId) {
-		BusStopInfo result = new BusStopInfo();
 		List<BookingDB> allPassangersThatHaveToGetOn = this.bookingDao
 				.getByBusPathStepStartIdEquals(currentBusStopPathId);
 		List<Passenger> passengers = allPassangersThatHaveToGetOn.stream().map(booking -> {
-			return this.getMapper().map(booking.getPassenger(), Passenger.class);
+			return this.passengerMapper.toDTO(booking.getPassenger());
 		}).collect(Collectors.toList());
-		result.setPassengers(passengers);
-		result.setPassengersCount(passengers.size());
+		BusStopInfo result = new BusStopInfo(passengers.size(), passengers);
 		return result;
 	}
 }

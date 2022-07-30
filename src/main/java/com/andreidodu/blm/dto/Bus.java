@@ -1,15 +1,11 @@
 package com.andreidodu.blm.dto;
+///// @formatter:off
+ 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+public record Bus(
+		long id, 
+		int capacity,
+		long busLineId
+		) {}
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class Bus {
-
-	private Long id;
-	private Integer capacity;
-
-}
+// @formatter:on

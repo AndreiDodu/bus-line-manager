@@ -2,21 +2,18 @@ package com.andreidodu.blm.dto;
 
 import java.util.Date;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+//// @formatter:off
+ 
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-public class BusPathStep {
-
-	private Long id;
-	private BusStop busStop;
-	private Long busStopId;
-	// private BusPath busPath;
-	private Date expectedArrivalTime;
-	private Date departureTime;
+public record BusPathStep(
+		long id, 
+		BusStop busStop, 
+		long busStopId, 
+		long busPathId, 
+		Date expectedArrivalTime, 
+		Date departureTime,
+		BusPath busPath
+		) {
 }
+
+// @formatter:on

@@ -1,5 +1,7 @@
 package com.andreidodu.blm.service.impl;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -25,6 +27,15 @@ public class BusPathServiceImpl extends CommonServiceImpl<BusPath, BusPathDB, Bu
 
 	public BusPathDao getDao() {
 		return this.busPathDao;
+	}
+
+	public boolean delete(Long id) {
+		Optional<BusPathDB> dbOpt = this.getDao().findById(id);
+		if (dbOpt.isPresent()) {
+			this.getDao().deleteById(dbOpt.get().getId());
+			return true;
+		}
+		return false;
 	}
 
 }

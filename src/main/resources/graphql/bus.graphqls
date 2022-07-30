@@ -1,11 +1,12 @@
 type Bus {
-
     id: ID!
     capacity: Int!
+    busLineId: ID
 }
 
 input BusInsertInput {
     capacity: Int!
+    busLineId: ID
 }
 
 type Query {

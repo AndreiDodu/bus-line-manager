@@ -1,6 +1,8 @@
 package com.andreidodu.blm.service.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,11 +34,9 @@ public class BusPathStepServiceImpl
 
 	@Override
 	public List<BusPathStep> findByBusPathId(Long busPathId) {
-		Iterable<BusPathStepDB> dbs = this.busPathDao.findByBusPathId(busPathId);
-		// XXX orika calls getBusStop even if it should not do that
-		// so that hibernate makes more queries than expected
-		// TODO do something
-		List<BusPathStep> result = this.getMapper().mapAsList(dbs, BusPathStep.class);
+		Iterable<BusPathStepDB> dbs = this.busPathDao.findByBusPathDB_Id(busPathId);
+		List<BusPathStep> result = this.getMapper()
+				.toDTOList(StreamSupport.stream(dbs.spliterator(), false).collect(Collectors.toList()));
 		return result;
 	}
 
