@@ -1,5 +1,4 @@
-# bus-line-manager
-Bus line manager
+# Bus line manager
 
 Work in progress...
 
