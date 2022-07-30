@@ -16,7 +16,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query Bus{\n    data0: getBus(id: 0){\n        id\n        capacity\n    }\n    data1: getBus(id: 1){\n        id\n        capacity\n    }    \n    data2: getBus(id: 2){\n        id\n        capacity\n    }        \n    data3: getBus(id: 3){\n        id\n        capacity\n    }\n}",
+								"query": "query Bus{\n    data0: getBus(id: 1){\n        id\n        capacity\n    }\n    data1: getBus(id: 4){\n        id\n        capacity\n    }    \n    data2: getBus(id: 2){\n        id\n        capacity\n    }        \n    data3: getBus(id: 3){\n        id\n        capacity\n    }\n}",
 								"variables": ""
 							}
 						},
@@ -94,7 +94,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation Bus{\n    updateBus(id: 4, data: {capacity: 90}){\n        id\n        capacity\n    }\n}",
+								"query": "mutation Bus{\n    updateBus(id: 4, data: {capacity: 100}){\n        id\n        capacity\n    }\n}",
 								"variables": ""
 							}
 						},
@@ -1091,7 +1091,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "mutation updateBooking{\n     updateBooking(id: 3, data: {seatId: 1, passengerId:1, busPathStartId: 3, busPathEndId: 4}){\n        id\n    }\n   \n}",
+								"query": "mutation updateBooking{\n     updateBooking(id: 3, data: {seatId: 1, passengerId:1, busPathStepStartId: 3, busPathStepEndId: 4}){\n        id\n    }\n   \n}",
 								"variables": ""
 							}
 						},
