@@ -8,6 +8,7 @@ import com.andreidodu.blm.dto.input.insert.PassengerInsertInput;
 import com.andreidodu.blm.service.PassengerService;
 
 import graphql.kickstart.tools.GraphQLMutationResolver;
+import graphql.schema.DataFetchingEnvironment;
 
 @Component
 public class PassengerMutationResolver implements GraphQLMutationResolver {
@@ -15,8 +16,8 @@ public class PassengerMutationResolver implements GraphQLMutationResolver {
 	@Autowired
 	private PassengerService service;
 
-	public Passenger insertPassenger(PassengerInsertInput data) {
-		return this.service.save(data);
+	public Passenger insertPassenger(PassengerInsertInput data, DataFetchingEnvironment env) {
+		return this.service.save(data, env);
 	}
 
 	public Passenger updatePassenger(Long id, PassengerInsertInput data) {

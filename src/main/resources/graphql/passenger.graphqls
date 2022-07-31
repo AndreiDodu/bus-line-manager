@@ -1,3 +1,5 @@
+scalar Upload
+
 type Passenger {
     id: ID!
     firstName: String!
@@ -6,7 +8,8 @@ type Passenger {
 
 input PassengerInsertInput {
     firstName: String!
-    secondName: String!    
+    secondName: String!  
+    files: [Upload!]  
 }
 
 input PassengerUpdateInput {
