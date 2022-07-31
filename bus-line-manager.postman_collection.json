@@ -627,6 +627,50 @@
 					"response": []
 				},
 				{
+					"name": "insertPassengerAndAttachments",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "operations",
+									"value": "{\"query\": \"mutation($file0: Upload!){insertPassenger( \ndata: {firstName: \\\"ciao\\\", secondName : \\\"ciao\\\", files: [$file0]} \n){firstName}}\", \"variables\": {\"files\": null}}",
+									"type": "default"
+								},
+								{
+									"key": "map",
+									"value": "{\"0\": [\"variables.file0\"],\"1\": [\"variables.file1\"]}",
+									"type": "default"
+								},
+								{
+									"key": "0",
+									"type": "file",
+									"src": "/home/andrei/git/bus-line-manager/bus-line-manager.postman_collection.json"
+								},
+								{
+									"key": "1",
+									"type": "file",
+									"src": "/home/andrei/git/bus-line-manager/docker-compose.yml"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "getPassenger",
 					"request": {
 						"method": "POST",
