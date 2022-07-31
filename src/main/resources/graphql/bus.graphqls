@@ -1,12 +1,16 @@
+scalar JSON
+
 type Bus {
     id: ID!
     capacity: Int!
     busLineId: ID
+    fields: JSON
 }
 
 input BusInsertInput {
     capacity: Int!
     busLineId: ID
+    fields: JSON
 }
 
 type Query {

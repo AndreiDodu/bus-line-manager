@@ -14,6 +14,7 @@ import com.andreidodu.blm.dto.BusStop;
 import com.andreidodu.blm.dto.BusStopInfo;
 import com.andreidodu.blm.dto.Passenger;
 import com.andreidodu.blm.dto.input.insert.BusStopInsertInput;
+import com.andreidodu.blm.mapper.BusStopMapper;
 import com.andreidodu.blm.mapper.PassengerMapper;
 import com.andreidodu.blm.repository.BookingDao;
 import com.andreidodu.blm.repository.BusStopDao;
@@ -21,7 +22,8 @@ import com.andreidodu.blm.service.BusStopService;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
-public class BusStopServiceImpl extends CommonServiceImpl<BusStop, BusStopDB, BusStopDao, BusStopInsertInput, Long>
+public class BusStopServiceImpl
+		extends CommonServiceImpl<BusStop, BusStopDB, BusStopDao, BusStopInsertInput, Long, BusStopMapper>
 		implements BusStopService {
 
 	@Autowired

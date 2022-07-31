@@ -32,6 +32,7 @@
 				<constraints nullable="false" primaryKey="true"	primaryKeyName="pk_bus_seq" />
 			</column>
 			<column name="capacity" type="INT" />
+			<column name="fields" type="JSONB" />
 			<column name="insert_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
 			<column name="update_date" type="DATETIME" defaultValueComputed="${defaultTimeStamp}" />
 			<column name="version" type="INT" />

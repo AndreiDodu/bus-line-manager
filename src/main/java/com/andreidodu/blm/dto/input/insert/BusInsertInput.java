@@ -1,5 +1,7 @@
 package com.andreidodu.blm.dto.input.insert;
 
-public record BusInsertInput(int capacity, long busLineId) {
+import org.json.JSONObject;
+
+public record BusInsertInput(int capacity, long busLineId, JSONObject fields) {
 
 }

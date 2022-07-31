@@ -11,8 +11,6 @@ public interface CommonMapper<DTOType, DBType, InsertDTOType> {
 
 	DBType toDB(DTOType dto);
 
-	DTOType mapToDTO(DBType db);
-
 	DBType mapToDB(DTOType dto, @MappingTarget DBType db);
 
 	DBType mapIDTOToDB(InsertDTOType dto);

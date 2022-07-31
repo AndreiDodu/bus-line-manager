@@ -10,12 +10,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.andreidodu.blm.db.BusPathDB;
 import com.andreidodu.blm.dto.BusPath;
 import com.andreidodu.blm.dto.input.insert.BusPathInsertInput;
+import com.andreidodu.blm.mapper.BusPathMapper;
 import com.andreidodu.blm.repository.BusPathDao;
 import com.andreidodu.blm.service.BusPathService;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
-public class BusPathServiceImpl extends CommonServiceImpl<BusPath, BusPathDB, BusPathDao, BusPathInsertInput, Long>
+public class BusPathServiceImpl
+		extends CommonServiceImpl<BusPath, BusPathDB, BusPathDao, BusPathInsertInput, Long, BusPathMapper>
 		implements BusPathService {
 
 	@Autowired

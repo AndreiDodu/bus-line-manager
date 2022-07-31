@@ -9,13 +9,15 @@ import com.andreidodu.blm.db.BusDB;
 import com.andreidodu.blm.db.BusLineDB;
 import com.andreidodu.blm.dto.Bus;
 import com.andreidodu.blm.dto.input.insert.BusInsertInput;
+import com.andreidodu.blm.mapper.BusMapper;
 import com.andreidodu.blm.repository.BusDao;
 import com.andreidodu.blm.repository.BusLineDao;
 import com.andreidodu.blm.service.BusService;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
-public class BusServiceImpl extends CommonServiceImpl<Bus, BusDB, BusDao, BusInsertInput, Long> implements BusService {
+public class BusServiceImpl extends CommonServiceImpl<Bus, BusDB, BusDao, BusInsertInput, Long, BusMapper>
+		implements BusService {
 
 	@Autowired
 	private BusDao busDao;
@@ -40,7 +42,7 @@ public class BusServiceImpl extends CommonServiceImpl<Bus, BusDB, BusDao, BusIns
 		}
 		BusDB db = this.getDao().save(toSave);
 
-		return this.getMapper().mapToDTO(db);
+		return this.getMapper().toDTO(db);
 	}
 
 }

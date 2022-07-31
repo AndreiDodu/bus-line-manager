@@ -8,12 +8,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.andreidodu.blm.db.BookingDB;
 import com.andreidodu.blm.dto.Booking;
 import com.andreidodu.blm.dto.input.insert.BookingInsertInput;
+import com.andreidodu.blm.mapper.BookingMapper;
 import com.andreidodu.blm.repository.BookingDao;
 import com.andreidodu.blm.service.BookingService;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
-public class BookingServiceImpl extends CommonServiceImpl<Booking, BookingDB, BookingDao, BookingInsertInput, Long>
+public class BookingServiceImpl
+		extends CommonServiceImpl<Booking, BookingDB, BookingDao, BookingInsertInput, Long, BookingMapper>
 		implements BookingService {
 
 	@Autowired

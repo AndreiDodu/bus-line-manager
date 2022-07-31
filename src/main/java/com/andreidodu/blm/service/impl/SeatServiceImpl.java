@@ -8,12 +8,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.andreidodu.blm.db.SeatDB;
 import com.andreidodu.blm.dto.Seat;
 import com.andreidodu.blm.dto.input.insert.SeatInsertInput;
+import com.andreidodu.blm.mapper.SeatMapper;
 import com.andreidodu.blm.repository.SeatDao;
 import com.andreidodu.blm.service.SeatService;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
-public class SeatServiceImpl extends CommonServiceImpl<Seat, SeatDB, SeatDao, SeatInsertInput, Long>
+public class SeatServiceImpl extends CommonServiceImpl<Seat, SeatDB, SeatDao, SeatInsertInput, Long, SeatMapper>
 		implements SeatService {
 
 	@Autowired

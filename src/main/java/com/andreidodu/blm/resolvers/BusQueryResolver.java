@@ -17,7 +17,8 @@ public class BusQueryResolver implements GraphQLQueryResolver {
 	private BusService service;
 
 	public Bus getBus(Long id) {
-		return this.service.findById(id);
+		Bus bus = this.service.findById(id);
+		return bus;
 	}
 
 	public List<Bus> getBuses() {

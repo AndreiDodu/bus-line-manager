@@ -8,12 +8,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.andreidodu.blm.db.BusLineDB;
 import com.andreidodu.blm.dto.BusLine;
 import com.andreidodu.blm.dto.input.insert.BusLineInsertInput;
+import com.andreidodu.blm.mapper.BusLineMapper;
 import com.andreidodu.blm.repository.BusLineDao;
 import com.andreidodu.blm.service.BusLineService;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
-public class BusLineServiceImpl extends CommonServiceImpl<BusLine, BusLineDB, BusLineDao, BusLineInsertInput, Long>
+public class BusLineServiceImpl
+		extends CommonServiceImpl<BusLine, BusLineDB, BusLineDao, BusLineInsertInput, Long, BusLineMapper>
 		implements BusLineService {
 
 	@Autowired

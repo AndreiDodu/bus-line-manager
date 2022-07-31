@@ -14,12 +14,18 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+
+import com.vladmihalcea.hibernate.type.json.JsonType;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
 @Table(name = "bus")
+@TypeDef(name = "json", typeClass = JsonType.class)
 @EqualsAndHashCode(exclude = { "busLines" }, callSuper = true)
 public class BusDB extends CommonDB {
 
@@ -30,6 +36,10 @@ public class BusDB extends CommonDB {
 
 	@Column(name = "capacity", nullable = false)
 	private Integer capacity;
+
+	@Type(type = "json")
+	@Column(name = "fields", nullable = false, columnDefinition = "jsonb")
+	private String fieldsJSON;
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "bus_bus_line", joinColumns = { @JoinColumn(name = "bus_id") }, inverseJoinColumns = {

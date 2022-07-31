@@ -12,20 +12,20 @@ import org.springframework.transaction.annotation.Transactional;
 import com.andreidodu.blm.mapper.CommonMapper;
 
 @Transactional(propagation = Propagation.REQUIRED)
-public abstract class CommonServiceImpl<DTOType, DBType, C extends CrudRepository<DBType, E>, InsertDTOType, E> {
+public abstract class CommonServiceImpl<DTOType, DBType, DatoType extends CrudRepository<DBType, IDType>, InsertDTOType, IDType, MapperType extends CommonMapper<DTOType, DBType, InsertDTOType>> {
 
 	final Class<DTOType> typeOfDTO;
 	final Class<DBType> typeOfDB;
 
 	@Autowired
-	private CommonMapper<DTOType, DBType, InsertDTOType> mapper;
+	private MapperType mapper;
 
 	public CommonServiceImpl(Class<DTOType> typeOfA, Class<DBType> typeOfB) {
 		this.typeOfDTO = typeOfA;
 		this.typeOfDB = typeOfB;
 	}
 
-	public DTOType findById(E id) {
+	public DTOType findById(IDType id) {
 		DBType db = this.getDao().findById(id).get();
 		return this.getMapper().toDTO(db);
 	}
@@ -33,7 +33,7 @@ public abstract class CommonServiceImpl<DTOType, DBType, C extends CrudRepositor
 	public List<DTOType> getAll() {
 		List<DTOType> buses = new ArrayList<>();
 		this.getDao().findAll().forEach(busDB -> {
-			buses.add(getMapper().mapToDTO(busDB));
+			buses.add(getMapper().toDTO(busDB));
 		});
 		return buses;
 	}
@@ -41,17 +41,17 @@ public abstract class CommonServiceImpl<DTOType, DBType, C extends CrudRepositor
 	public DTOType save(InsertDTOType data) {
 		DBType toSave = this.getMapper().mapIDTOToDB(data);
 		DBType db = this.getDao().save(toSave);
-		return this.getMapper().mapToDTO(db);
+		return this.getMapper().toDTO(db);
 	}
 
-	public DTOType update(E id, InsertDTOType data) {
+	public DTOType update(IDType id, InsertDTOType data) {
 		DBType db = this.getDao().findById(id).get();
 		this.getMapper().mapUDTOToDB(db, data);
 		db = this.getDao().save(db);
-		return this.getMapper().mapToDTO(db);
+		return this.getMapper().toDTO(db);
 	}
 
-	public boolean delete(E id) {
+	public boolean delete(IDType id) {
 		Optional<DBType> dbOpt = this.getDao().findById(id);
 		if (dbOpt.isPresent()) {
 			this.getDao().delete(dbOpt.get());
@@ -60,9 +60,9 @@ public abstract class CommonServiceImpl<DTOType, DBType, C extends CrudRepositor
 		return false;
 	}
 
-	protected abstract C getDao();
+	protected abstract DatoType getDao();
 
-	protected CommonMapper<DTOType, DBType, InsertDTOType> getMapper() {
+	protected MapperType getMapper() {
 		return this.mapper;
 	}
 
